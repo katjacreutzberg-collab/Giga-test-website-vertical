@@ -991,35 +991,34 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 
   .panel__inner { padding: 56px 40px; }
 
-  /* Hero: side-by-side again but shorter */
-  .panel--hero { flex-direction: row; min-height: 0; height: auto; }
+  /* Hero: stacked but full-screen height */
+  .panel--hero { flex-direction: column; min-height: 100svh; }
   .hero__content {
-    width: 54%; flex: none;
-    padding: 72px 40px 56px;
-    border-right: 1px solid rgba(255,255,255,0.07);
-    border-bottom: none;
+    width: 100%; flex: 1; border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 80px 40px 52px;
   }
-  .hero__headline { font-size: clamp(2.4rem, 4.5vw, 3.4rem); }
-  .hero__photo { flex: 1; height: auto; min-height: 400px; }
+  .hero__headline { font-size: clamp(2.8rem, 5.5vw, 4rem); }
+  .hero__photo { width: 100%; flex: 0 0 38vh; min-height: 240px; }
 
   /* About: keep stacked but stats in 2×2 grid */
   .about__inner { padding: 0; }
   .about__left { padding: 56px 40px 40px; }
   .about__right { padding: 40px 40px 56px; }
-  .stats-col {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-  }
-  .stat-item { padding: 20px 24px 20px 0; }
+  .stats-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .stat-item { padding: 20px 32px 20px 0; }
   .stat-divider { display: none; }
   .stat__num { font-size: clamp(2rem, 4vw, 2.6rem); }
 
   /* References: taller photo strip */
-  .ref__photos-wrap { height: 50vw; min-height: 340px; }
-  .ref__photo { flex: 0 0 50vw; }
+  .ref__photos-wrap { height: 46vw; min-height: 320px; }
+  .ref__photo { flex: 0 0 48vw; }
 
-  /* Products: taller cards, wider peek */
-  .product-cards { height: 480px; }
-  .product-card { flex: 0 0 52vw; height: 480px; }
+  /* Products: compact header, taller swipeable cards */
+  .products__header { padding: 40px 40px 28px; }
+  .products__sub { display: none; } /* too long on tablet, hide */
+  .product-cards { height: 460px; }
+  .product-card { flex: 0 0 44vw; height: 460px; }
 
   /* Why: 3-column grid (like desktop) */
   .why__inner { padding: 56px 40px; }
@@ -1029,7 +1028,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* Contact: side-by-side again */
   .contact__inner { flex-direction: row; }
   .contact__left {
-    flex: 0 0 40%; padding: 56px 40px 56px 40px;
+    flex: 0 0 40%; padding: 56px 40px;
     border-right: 1px solid var(--border-light); border-bottom: none;
   }
   .contact__right { flex: 1; padding: 56px 40px; }
