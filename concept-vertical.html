@@ -1136,8 +1136,6 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       var next = document.querySelector('.ref__arrow--next');
       if (!row1 || !prev || !next) return;
 
-      var STEP = row1.clientWidth; // scroll exactly one full view at a time
-
       function updateArrows() {
         prev.style.opacity = row1.scrollLeft <= 4 ? '0.35' : '1';
         next.style.opacity = row1.scrollLeft >= row1.scrollWidth - row1.clientWidth - 4 ? '0.35' : '1';
@@ -1162,10 +1160,10 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       }
 
       prev.addEventListener('click', function () {
-        row1.scrollBy({ left: -STEP, behavior: 'smooth' });
+        row1.scrollBy({ left: -row1.clientWidth, behavior: 'smooth' });
       });
       next.addEventListener('click', function () {
-        row1.scrollBy({ left: STEP, behavior: 'smooth' });
+        row1.scrollBy({ left: row1.clientWidth, behavior: 'smooth' });
       });
       updateArrows();
     })();
