@@ -1,5 +1,10 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/concept-vertical.html" }
+    { "source": "/", "destination": "/concept-vertical.html" },
+    { "source": "/gehard-glas", "destination": "/gehard-glas.html" },
+    { "source": "/gelaagd-glas", "destination": "/gelaagd-glas.html" },
+    { "source": "/brandwerend-glas", "destination": "/brandwerend-glas.html" },
+    { "source": "/zeefdruk-glas", "destination": "/zeefdruk-glas.html" },
+    { "source": "/gebogen-glas", "destination": "/gebogen-glas.html" }
   ]
 }
