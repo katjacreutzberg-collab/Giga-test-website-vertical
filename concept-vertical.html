@@ -176,6 +176,18 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .text-accent { color: var(--teal); }
 
+@keyframes wcIn {
+  from { opacity: 0; transform: translateY(-16px); filter: blur(7px); }
+  to   { opacity: 1; transform: translateY(0);     filter: blur(0px); }
+}
+@keyframes wcOut {
+  from { opacity: 1; transform: translateY(0);    filter: blur(0px); }
+  to   { opacity: 0; transform: translateY(16px); filter: blur(7px); }
+}
+.word-cycle { color: var(--teal); display: inline-block; white-space: nowrap; }
+.word-cycle.wc-exit  { animation: wcOut 0.30s cubic-bezier(0.55,0,1,0.45) forwards; }
+.word-cycle.wc-enter { animation: wcIn  0.45s cubic-bezier(0.00,0.55,0.45,1.00) forwards; }
+
 .hero__sub {
   font-size: clamp(0.88rem, 1.1vw, 1rem); color: rgba(255,255,255,0.6);
   line-height: 1.8; max-width: 520px; margin-bottom: 44px;
@@ -579,7 +591,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       <div class="panel__counter anim" data-delay="0">01</div>
       <span class="eyebrow anim" data-delay="100">Internationale Veiligheidsglasgroothandel</span>
       <h1 class="hero__headline anim" data-delay="210">
-        Glas dat<br /><span class="text-accent">presteert</span><br />op elke schaal.
+        <span id="wordCycle" class="word-cycle"></span><span id="heroCycleAfter"></span>
       </h1>
       <p class="hero__sub anim" data-delay="360">
         Van oversized geharde panelen tot 18&nbsp;m, gebogen beglazing, brandwerende barrières
@@ -967,6 +979,40 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 
     // Hero fires immediately
     document.querySelector('.hero').classList.add('section--visible');
+
+    // Word cycle
+    (function () {
+      var words   = ['Zeefdruk glas', 'Gebogen glas', 'Gelaagd glas', 'Gehard glas', 'Brandwerend glas'];
+      var after   = '<br />dat presteert<br />op elke schaal.';
+      var cycleEl = document.getElementById('wordCycle');
+      var afterEl = document.getElementById('heroCycleAfter');
+      if (!cycleEl || !afterEl) return;
+      afterEl.innerHTML = after;
+
+      var idx      = 0;
+      var INTERVAL = 2000;
+      var EXIT_MS  = 310;
+
+      function showWord(word, animate) {
+        cycleEl.classList.remove('wc-exit', 'wc-enter');
+        void cycleEl.offsetWidth;
+        cycleEl.innerHTML = word;
+        if (animate) cycleEl.classList.add('wc-enter');
+      }
+
+      function step() {
+        cycleEl.classList.remove('wc-enter');
+        void cycleEl.offsetWidth;
+        cycleEl.classList.add('wc-exit');
+        setTimeout(function () {
+          idx = (idx + 1) % words.length;
+          showWord(words[idx], true);
+        }, EXIT_MS);
+      }
+
+      showWord(words[0], true);
+      setInterval(step, INTERVAL);
+    })();
   </script>
 </body>
 </html>
