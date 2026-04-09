@@ -32,7 +32,7 @@
 }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: hidden; }
 img  { display: block; max-width: 100%; }
 a    { text-decoration: none; color: inherit; }
 ul   { list-style: none; }
@@ -819,14 +819,20 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* Products */
   .products__top { flex-direction: column; gap: 16px; align-items: flex-start; }
   .products__top-left { padding-right: 0; }
+  .products__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .prod-card { min-width: calc(100% / 3); height: 400px; }
   .prod-card:hover { flex: 2.2 1 0; }
 
   /* Why */
   .why__top { flex-direction: column; gap: 16px; align-items: flex-start; padding-bottom: 28px; }
   .why__top-left { padding-right: 0; }
+  .why__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .why__cards { grid-template-columns: repeat(2, 1fr); }
   .why__cta { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* References */
+  .ref__intro-left { padding-right: 0; }
+  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
 
   /* References */
   .ref__cell { min-width: calc(100% / 3); height: 300px; }
@@ -891,6 +897,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* Products */
   .products__top { flex-direction: column; gap: 12px; align-items: flex-start; }
   .products__top-left { padding-right: 0; }
+  .products__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .product-strip { gap: 0; }
   .prod__arrow { display: flex; }
   .prod-card { min-width: 78vw; height: 340px; flex-shrink: 0; }
@@ -899,11 +906,14 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* Why */
   .why__top { flex-direction: column; gap: 12px; align-items: flex-start; padding-bottom: 24px; }
   .why__top-left { padding-right: 0; }
+  .why__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .why__cards { grid-template-columns: 1fr; gap: 12px; }
   .why__cta { flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 28px; }
   .why-card::before { font-size: 4rem; }
 
   /* References */
+  .ref__intro-left { padding-right: 0; }
+  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .ref__scroll-wrap { margin: 0 calc(-1 * var(--pad-x)); }
   .ref__cell { min-width: 72vw; height: 260px; }
   .ref__cell:hover { flex: 1.2 1 0; }
@@ -1023,12 +1033,12 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
         <div class="stat-divider"></div>
         <div class="stat-item anim" data-delay="340">
           <span class="stat__num" data-count="120" data-prefix="EI ">EI 120</span>
-          <span class="stat__label">Max. brandweerstandsklasse</span>
+          <span class="stat__label">Brandweerstand</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item anim" data-delay="430">
-          <span class="stat__num">Europa</span>
-          <span class="stat__label">Groothandeldistributie</span>
+          <span class="stat__num">EU</span>
+          <span class="stat__label">Distributie</span>
         </div>
       </div>
     </div>
