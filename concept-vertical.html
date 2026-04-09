@@ -406,6 +406,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 .ref__row::-webkit-scrollbar { display: none; }
 
@@ -1204,35 +1205,43 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       var next = document.querySelector('.ref__arrow--next');
       if (!row1 || !prev || !next) return;
 
+      function step() {
+        // Width of exactly 6 cells = one full visible page
+        var cell = row1.querySelector('.ref__cell');
+        return cell ? cell.offsetWidth * 6 : row1.clientWidth;
+      }
+
+      function clamp(val) {
+        return Math.max(0, Math.min(val, row1.scrollWidth - row1.clientWidth));
+      }
+
+      function scrollBoth(pos) {
+        pos = clamp(pos);
+        row1.scrollLeft = pos;
+        if (row2) row2.scrollLeft = pos;
+        updateArrows();
+      }
+
       function updateArrows() {
         prev.style.opacity = row1.scrollLeft <= 4 ? '0.35' : '1';
         next.style.opacity = row1.scrollLeft >= row1.scrollWidth - row1.clientWidth - 4 ? '0.35' : '1';
       }
 
-      var syncing = false;
-      row1.addEventListener('scroll', function () {
-        updateArrows();
-        if (syncing) return;
-        syncing = true;
-        if (row2) row2.scrollLeft = row1.scrollLeft;
-        syncing = false;
-      });
-      if (row2) {
-        row2.addEventListener('scroll', function () {
-          if (syncing) return;
-          syncing = true;
-          row1.scrollLeft = row2.scrollLeft;
-          updateArrows();
-          syncing = false;
-        });
-      }
+      prev.addEventListener('click', function () { scrollBoth(row1.scrollLeft - step()); });
+      next.addEventListener('click', function () { scrollBoth(row1.scrollLeft + step()); });
 
-      prev.addEventListener('click', function () {
-        row1.scrollBy({ left: -row1.clientWidth, behavior: 'smooth' });
+      // Sync on native scroll (touch/trackpad) — debounced to avoid loop
+      var ticking = false;
+      row1.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          if (row2) row2.scrollLeft = row1.scrollLeft;
+          updateArrows();
+          ticking = false;
+        });
       });
-      next.addEventListener('click', function () {
-        row1.scrollBy({ left: row1.clientWidth, behavior: 'smooth' });
-      });
+
       updateArrows();
     })();
 
