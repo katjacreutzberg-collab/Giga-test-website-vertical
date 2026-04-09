@@ -108,6 +108,42 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .nav__lang-dropdown button:hover { background: var(--glacial); color: var(--teal); }
 
+/* Products dropdown */
+.nav__dropdown { position: relative; align-self: stretch; display: flex; align-items: center; }
+.nav__dropdown-trigger {
+  display: flex; align-items: center; gap: 5px; cursor: default;
+}
+.nav__dropdown-trigger svg { transition: transform 0.22s; flex-shrink: 0; }
+.nav__dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  background: var(--white); border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  min-width: 210px; overflow: hidden; z-index: 300;
+}
+.nav__dropdown:hover .nav__dropdown-menu,
+.nav__dropdown:focus-within .nav__dropdown-menu { display: block; }
+.nav__dropdown:hover .nav__dropdown-trigger svg { transform: rotate(180deg); }
+.nav__dropdown-menu a {
+  display: block; padding: 11px 18px;
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-mid); border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: background 0.18s, color 0.18s;
+}
+.nav__dropdown-menu a:last-child { border-bottom: none; }
+.nav__dropdown-menu a:hover { background: var(--glacial); color: var(--teal); }
+
+/* Mobile submenu */
+.nav__mobile-sub {
+  display: flex; flex-direction: column;
+  border-left: 2px solid var(--teal); margin: 0 0 4px 8px; padding-left: 8px;
+}
+.nav__mobile-sub a {
+  font-size: 0.75rem !important; padding: 10px 0 !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04) !important; color: var(--text-light) !important;
+}
+.nav__mobile-sub a:hover { color: var(--teal) !important; }
+
 /* Mobile hamburger */
 .nav__burger {
   display: none;
@@ -868,7 +904,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .footer__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 48px;
   padding-bottom: clamp(32px,4vw,48px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -899,6 +935,9 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .footer__bottom a { color: rgba(255,255,255,0.30); transition: color 0.2s; }
 .footer__bottom a:hover { color: rgba(255,255,255,0.65); }
 
+@media (max-width: 1199px) {
+  .footer__inner { grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
+}
 @media (max-width: 1023px) {
   .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
@@ -1082,7 +1121,18 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       <nav class="nav__links">
         <a href="#about" data-i18n="nav.about">Over ons</a>
         <a href="#references" data-i18n="nav.references">Referenties</a>
-        <a href="#products" data-i18n="nav.products">Producten</a>
+        <div class="nav__dropdown">
+          <a href="#products" class="nav__dropdown-trigger" data-i18n="nav.products">Producten
+            <svg viewBox="0 0 10 6" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+          </a>
+          <div class="nav__dropdown-menu">
+            <a href="/gehard-glas">Gehard Glas</a>
+            <a href="/gelaagd-glas">Gelaagd Glas</a>
+            <a href="/brandwerend-glas">Brandwerend Glas</a>
+            <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+            <a href="/gebogen-glas">Gebogen Glas</a>
+          </div>
+        </div>
         <a href="#why" data-i18n="nav.why">Waarom GIGAglas</a>
       </nav>
       <div class="nav__right">
@@ -1109,6 +1159,13 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <a href="#about" data-i18n="nav.about">Over ons</a>
     <a href="#references" data-i18n="nav.references">Referenties</a>
     <a href="#products" data-i18n="nav.products">Producten</a>
+    <div class="nav__mobile-sub">
+      <a href="/gehard-glas">Gehard Glas</a>
+      <a href="/gelaagd-glas">Gelaagd Glas</a>
+      <a href="/brandwerend-glas">Brandwerend Glas</a>
+      <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+      <a href="/gebogen-glas">Gebogen Glas</a>
+    </div>
     <a href="#why" data-i18n="nav.why">Waarom GIGAglas</a>
     <a href="#contact" class="nav__cta-mobile" data-i18n="nav.cta">Offerte aanvragen</a>
   </div>
@@ -1522,6 +1579,16 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
           <a href="#references">Referenties</a>
           <a href="#why">Waarom GIGAglas</a>
           <a href="#contact">Offerte aanvragen</a>
+        </nav>
+      </div>
+      <div class="footer__assortiment">
+        <p class="footer__col-title">Assortiment</p>
+        <nav class="footer__links">
+          <a href="/gehard-glas">Gehard Glas</a>
+          <a href="/gelaagd-glas">Gelaagd Glas</a>
+          <a href="/brandwerend-glas">Brandwerend Glas</a>
+          <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+          <a href="/gebogen-glas">Gebogen Glas</a>
         </nav>
       </div>
       <div class="footer__info">
