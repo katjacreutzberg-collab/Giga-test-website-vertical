@@ -405,16 +405,21 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 ═══════════════════════════════════════════ */
 .products {
   background: var(--glacial);
-  padding: clamp(72px,9vw,120px) 0 clamp(72px,9vw,120px) var(--pad-x);
+  padding: clamp(72px,9vw,120px) var(--pad-x);
 }
 .products__top {
-  margin-bottom: 48px; padding-right: var(--pad-x);
-  display: flex; align-items: flex-end; justify-content: space-between; gap: 40px;
+  margin-bottom: 48px;
+  display: flex; align-items: flex-end; gap: 0;
 }
+.products__top-left { flex-shrink: 0; padding-right: 48px; }
+.products__top-left .panel__title { margin-bottom: 0; }
 .products .panel__counter { color: var(--text-light); }
 .products .panel__title   { color: var(--text); }
 .products__sub {
-  max-width: 460px; font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-top: 16px; padding-left: 14px;
+  flex: 1; max-width: 540px;
+  border-left: 1px solid rgba(27,159,149,0.35);
+  padding-left: 40px;
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-top: 0;
 }
 
 /* Horizontal card strip */
@@ -422,7 +427,6 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   display: flex; gap: 4px;
   overflow-x: auto; overflow-y: hidden;
   scrollbar-width: none; position: relative;
-  padding-right: var(--pad-x);
 }
 .product-strip::-webkit-scrollbar { display: none; }
 
@@ -505,14 +509,21 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .why__inner { position: relative; z-index: 1; }
 .why__top {
-  display: grid; grid-template-columns: 28fr 72fr; gap: 48px;
-  align-items: start; margin-bottom: 48px;
+  display: flex; align-items: flex-end; gap: 0;
+  margin-bottom: 48px;
   padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.12);
 }
+.why__top-left { flex-shrink: 0; padding-right: 48px; }
+.why__top-left .panel__title { margin-bottom: 0; }
 .why .panel__counter { color: rgba(255,255,255,0.30); }
 .why .panel__title   { color: var(--white); }
 .why .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
-.why__sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 16px; padding-left: 14px; align-self: end; }
+.why__sub {
+  flex: 1; max-width: 540px;
+  border-left: 1px solid rgba(255,255,255,0.18);
+  padding-left: 40px;
+  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 0;
+}
 
 .why__cards {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -917,7 +928,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   ══════════════════════════════════════════ -->
   <section class="products section" id="products">
     <div class="products__top">
-      <div>
+      <div class="products__top-left">
         <span class="eyebrow anim" data-delay="100">Wat wij bieden</span>
         <h2 class="panel__title anim" data-delay="200">Ons product<br />assortiment</h2>
       </div>
@@ -1007,7 +1018,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   <section class="why" id="why">
     <div class="why__inner">
       <div class="why__top">
-        <div>
+        <div class="why__top-left">
           <span class="eyebrow anim" data-delay="100">Ons voordeel</span>
           <h2 class="panel__title anim" data-delay="200">Waarom<br />GIGAglas?</h2>
         </div>
