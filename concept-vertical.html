@@ -431,12 +431,12 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .product-strip::-webkit-scrollbar { display: none; }
 
 .prod-card {
-  flex: 0 0 320px; height: 480px;
+  flex: 1 1 0; min-width: 0; height: 480px;
   position: relative; overflow: hidden;
   cursor: pointer;
   transition: flex 0.65s cubic-bezier(0.4,0,0.2,1);
 }
-.prod-card:hover { flex: 0 0 460px; }
+.prod-card:hover { flex: 2.2 1 0; }
 
 .prod-card img {
   position: absolute; inset: 0;
