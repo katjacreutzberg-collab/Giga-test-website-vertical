@@ -404,6 +404,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .panel--references .panel__title   { color: var(--white); font-size: clamp(1.8rem, 2.6vw, 2.6rem); }
 .panel--references .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
 
+.ref__header .panel__title { margin-bottom: 0; }
 .ref__sub {
   font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75;
   margin-top: 20px;
