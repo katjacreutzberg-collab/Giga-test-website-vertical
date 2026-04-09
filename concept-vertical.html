@@ -76,6 +76,73 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   transform: translateY(-1px);
 }
 
+/* Language toggle */
+.nav__lang { position: relative; }
+.nav__lang-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: none; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px;
+  padding: 7px 11px; cursor: pointer; font-family: var(--font);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mid); transition: border-color 0.2s, color 0.2s;
+}
+.nav__lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+.nav__lang-btn svg { transition: transform 0.2s; }
+.nav__lang-btn.open svg { transform: rotate(180deg); }
+.nav__lang-dropdown {
+  display: none; position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--white); border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 160px; overflow: hidden; z-index: 300;
+}
+.nav__lang-dropdown.open { display: block; }
+.nav__lang-dropdown button {
+  display: block; width: 100%; padding: 12px 16px;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-mid); text-align: left; font-family: var(--font);
+  transition: background 0.2s, color 0.2s;
+}
+.nav__lang-dropdown button:hover { background: var(--glacial); color: var(--teal); }
+
+/* Mobile hamburger */
+.nav__burger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 7px;
+}
+.nav__burger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform 0.28s, opacity 0.2s;
+}
+.nav__burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav__burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav__mobile-menu {
+  display: none; flex-direction: column;
+  position: fixed; top: var(--nav-h); left: 0; right: 0;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding: 8px var(--pad-x) 24px;
+  z-index: 199;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.nav__mobile-menu.open { display: flex; }
+.nav__mobile-menu a {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-mid); padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: color 0.2s; display: block;
+}
+.nav__mobile-menu a:hover { color: var(--teal); }
+.nav__mobile-menu .nav__cta-mobile {
+  color: var(--white) !important; background: var(--orange);
+  text-align: center; padding: 14px 20px; border-radius: 4px;
+  margin-top: 8px; border-bottom: none;
+  box-shadow: 0 0 10px rgba(255,90,3,0.35);
+}
+
 /* ═══════════════════════════════════════════
    SHARED ELEMENTS
 ═══════════════════════════════════════════ */
@@ -307,7 +374,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 ═══════════════════════════════════════════ */
 .references {
   background: linear-gradient(145deg, #041f1d 0%, #083a36 20%, #0d524e 50%, #126460 80%, #0f5a56 100%);
-  padding: clamp(72px,9vw,120px) var(--pad-x);
+  padding: clamp(72px,9vw,120px) var(--pad-x) 0;
 }
 .ref__intro {
   display: flex; align-items: flex-end;
@@ -325,13 +392,14 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .ref__sub {
   max-width: 540px;
-  border-left: 1px solid rgba(27,159,149,0.45);
-  padding-left: 40px;
   font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75;
   margin-top: 0;
 }
-.ref__intro-right .btn { margin-left: 40px; }
-
+.ref__sub-block {
+  border-left: 1px solid rgba(27,159,149,0.45);
+  padding-left: 40px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+}
 
 /* 2-row scroll strip — each cell expands individually */
 .ref__scroll-wrap {
@@ -551,13 +619,15 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .products__top-right {
   flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
 }
-.products__sub {
-  max-width: 540px;
+.products__sub-block {
   border-left: 1px solid rgba(27,159,149,0.35);
   padding-left: 40px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+}
+.products__sub {
+  max-width: 540px;
   font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 0;
 }
-.products__top-right .btn { margin-left: 40px; }
 
 /* Horizontal card strip */
 .product-strip-wrap { position: relative; margin-right: calc(-1 * var(--pad-x)); }
@@ -829,11 +899,9 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   .products__top { flex-direction: column; gap: 16px; align-items: flex-start; }
   .products__top-left { padding-right: 0; }
   .products__top-right { gap: 16px; }
-  .products__sub { border-left: none; padding-left: 0; max-width: 100%; }
-  .products__top-right .btn { margin-left: 0; }
+  .products__sub-block { border-left: none; padding-left: 0; }
   .ref__intro-right { gap: 16px; }
-  .ref__intro-right .btn { margin-left: 0; }
-  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
+  .ref__sub-block { border-left: none; padding-left: 0; }
   .prod-card { min-width: calc(100% / 3); height: 400px; }
   .prod-card:hover { flex: 2.2 1 0; }
   .product-strip-wrap { margin-right: 0; }
@@ -848,7 +916,6 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* References */
   .ref__intro { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
   .ref__intro-left { padding-right: 0; }
-  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .ref__cell { min-width: calc(100% / 3); height: 300px; }
   .ref__overlay { width: 60%; }
 
@@ -864,7 +931,8 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 @media (max-width: 767px) {
   /* Nav */
   .nav__links { display: none; }
-  .nav__cta { padding: 8px 16px; font-size: 0.72rem; }
+  .nav__burger { display: flex; }
+  .nav__cta { display: none; } /* CTA is in mobile menu */
 
   /* Typography */
   .hero__headline { font-size: clamp(1.9rem, 8vw, 2.4rem); }
@@ -912,11 +980,9 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   .products__top { flex-direction: column; gap: 12px; align-items: flex-start; }
   .products__top-left { padding-right: 0; }
   .products__top-right { gap: 12px; }
-  .products__sub { border-left: none; padding-left: 0; max-width: 100%; }
-  .products__top-right .btn { margin-left: 0; }
+  .products__sub-block { border-left: none; padding-left: 0; }
   .ref__intro-right { gap: 12px; }
-  .ref__intro-right .btn { margin-left: 0; }
-  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
+  .ref__sub-block { border-left: none; padding-left: 0; }
   .product-strip-wrap { margin: 0 calc(-1 * var(--pad-x)); }
   .product-strip { gap: 0; }
   .prod-card { min-width: 82vw; height: 340px; flex-shrink: 0; }
@@ -934,7 +1000,6 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   /* References */
   .ref__intro { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
   .ref__intro-left { padding-right: 0; }
-  .ref__sub { border-left: none; padding-left: 0; max-width: 100%; }
   .ref__scroll-wrap { margin: 0 calc(-1 * var(--pad-x)); }
   .ref__cell { min-width: 72vw; height: 260px; }
   .ref__cell:hover { flex: 1.2 1 0; }
@@ -961,32 +1026,54 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
              alt="GIGAglas" class="nav__logo-img" />
       </a>
       <nav class="nav__links">
-        <a href="#about">Over ons</a>
-        <a href="#references">Referenties</a>
-        <a href="#products">Producten</a>
-        <a href="#why">Waarom GIGAglas</a>
-        <a href="#contact" class="nav__cta">Offerte aanvragen</a>
+        <a href="#about" data-i18n="nav.about">Over ons</a>
+        <a href="#references" data-i18n="nav.references">Referenties</a>
+        <a href="#products" data-i18n="nav.products">Producten</a>
+        <a href="#why" data-i18n="nav.why">Waarom GIGAglas</a>
       </nav>
+      <div class="nav__lang">
+        <button class="nav__lang-btn" id="langToggle" aria-label="Taal">
+          <span id="currentLang">NL</span>
+          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+        </button>
+        <div class="nav__lang-dropdown" id="langDropdown">
+          <button onclick="setLanguage('nl')">NL — Nederlands</button>
+          <button onclick="setLanguage('en')">EN — English</button>
+        </div>
+      </div>
+      <a href="#contact" class="nav__cta" data-i18n="nav.cta">Offerte aanvragen</a>
+      <button class="nav__burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile nav menu -->
+  <div class="nav__mobile-menu" id="navMobileMenu">
+    <a href="#about" data-i18n="nav.about">Over ons</a>
+    <a href="#references" data-i18n="nav.references">Referenties</a>
+    <a href="#products" data-i18n="nav.products">Producten</a>
+    <a href="#why" data-i18n="nav.why">Waarom GIGAglas</a>
+    <a href="#contact" class="nav__cta-mobile" data-i18n="nav.cta">Offerte aanvragen</a>
+  </div>
 
   <!-- ══════════════════════════════════════════
        01 · HERO
   ══════════════════════════════════════════ -->
   <section class="hero" id="hero">
     <div class="hero__content">
-      <span class="eyebrow anim" data-delay="100">Internationale Veiligheidsglasgroothandel</span>
+      <span class="eyebrow anim" data-delay="100" data-i18n="hero.eyebrow">Internationale Veiligheidsglasgroothandel</span>
       <h1 class="hero__headline anim" data-delay="210">
         <span id="wordCycle" class="word-cycle"></span><span id="heroCycleAfter"></span>
       </h1>
-      <p class="hero__sub anim" data-delay="360">
+      <p class="hero__sub anim" data-delay="360" data-i18n="hero.sub">
         Van oversized geharde panelen tot 18&nbsp;m, gebogen beglazing, brandwerende barrières
         tot precisie gelamineerd en zeefdruk glas — GIGAglas levert het volledige spectrum
         veiligheidsbeglazing tegen groothandelsprijzen in Europa.
       </p>
       <div class="hero__actions anim" data-delay="500">
-        <a href="#products" class="btn btn--outline">Bekijk producten</a>
-        <a href="#contact"  class="btn btn--fill">Offerte aanvragen</a>
+        <a href="#products" class="btn btn--outline" data-i18n="hero.btn.products">Bekijk producten</a>
+        <a href="#contact"  class="btn btn--fill" data-i18n="cta">Offerte aanvragen</a>
       </div>
     </div>
 
@@ -1000,19 +1087,19 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <div class="hero__stats-bar">
       <div class="hero__stat-item">
         <div class="hero__stat-num" data-count="18" data-suffix=" m">18 m</div>
-        <div class="hero__stat-label">Max. lengte<br>gehard paneel</div>
+        <div class="hero__stat-label" data-i18n="hero.stat1">Max. lengte<br>gehard paneel</div>
       </div>
       <div class="hero__stat-item">
         <div class="hero__stat-num">CE</div>
-        <div class="hero__stat-label">Gecertificeerd</div>
+        <div class="hero__stat-label" data-i18n="hero.stat2">Gecertificeerd</div>
       </div>
       <div class="hero__stat-item">
         <div class="hero__stat-num" data-count="120" data-prefix="EI ">EI 120</div>
-        <div class="hero__stat-label">Brandweerstand</div>
+        <div class="hero__stat-label" data-i18n="hero.stat3">Brandweerstand</div>
       </div>
       <div class="hero__stat-item">
         <div class="hero__stat-num">EU</div>
-        <div class="hero__stat-label">Distributie Europa</div>
+        <div class="hero__stat-label" data-i18n="hero.stat4">Distributie Europa</div>
       </div>
     </div>
   </section>
@@ -1022,8 +1109,8 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   ══════════════════════════════════════════ -->
   <section class="about section" id="about">
     <div class="about__left">
-      <span class="eyebrow anim" data-delay="100">Wie wij zijn</span>
-      <h2 class="panel__title anim" data-delay="200">Uw strategische<br />partner in<br />veiligheidsbeglazing.</h2>
+      <span class="eyebrow anim" data-delay="100" data-i18n="about.eyebrow">Wie wij zijn</span>
+      <h2 class="panel__title anim" data-delay="200" data-i18n="about.title">Uw strategische<br />partner in<br />veiligheidsbeglazing.</h2>
       <p class="about__body anim" data-delay="310">
         GIGAglas is een internationale glasgroothandel met diepgaande expertise in gecertificeerd veiligheidsglas.
         Door de juiste productiepartnerschappen in Europa op te bouwen, ontsluiten wij productiecapaciteiten en
@@ -1071,15 +1158,17 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   <section class="products section" id="products">
     <div class="products__top">
       <div class="products__top-left">
-        <span class="eyebrow anim" data-delay="100">Wat wij bieden</span>
-        <h2 class="panel__title anim" data-delay="200">Ons product<br />assortiment</h2>
+        <span class="eyebrow anim" data-delay="100" data-i18n="products.eyebrow">Wat wij bieden</span>
+        <h2 class="panel__title anim" data-delay="200" data-i18n="products.title">Ons product<br />assortiment</h2>
       </div>
       <div class="products__top-right">
-        <p class="products__sub anim" data-delay="310">
-          Gespecialiseerd in gecertificeerde veiligheidsbeglazing voor grootschalige architectuur-
-          en bouwprojecten. Van oversized geharde panelen tot brandwerende systemen.
-        </p>
-        <a href="#contact" class="btn btn--fill anim" data-delay="420">Offerte aanvragen</a>
+        <div class="products__sub-block">
+          <p class="products__sub anim" data-delay="310" data-i18n="products.sub">
+            Gespecialiseerd in gecertificeerde veiligheidsbeglazing voor grootschalige architectuur-
+            en bouwprojecten. Van oversized geharde panelen tot brandwerende systemen.
+          </p>
+          <a href="#contact" class="btn btn--fill anim" data-delay="420" data-i18n="cta">Offerte aanvragen</a>
+        </div>
       </div>
     </div>
 
@@ -1169,8 +1258,8 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <div class="why__inner">
       <div class="why__top">
         <div class="why__top-left">
-          <span class="eyebrow anim" data-delay="100">Ons voordeel</span>
-          <h2 class="panel__title anim" data-delay="200">Waarom<br />GIGAglas?</h2>
+          <span class="eyebrow anim" data-delay="100" data-i18n="why.eyebrow">Ons voordeel</span>
+          <h2 class="panel__title anim" data-delay="200" data-i18n="why.title">Waarom<br />GIGAglas?</h2>
         </div>
         <p class="why__sub anim" data-delay="310">
           De juiste partnerschappen maken het verschil.<br />
@@ -1224,12 +1313,14 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   <section class="references section" id="references">
     <div class="ref__intro">
       <div class="ref__intro-left">
-        <span class="eyebrow anim" data-delay="100">Ons werk</span>
-        <h2 class="panel__title anim" data-delay="200">Projecten<br />in Europa.</h2>
+        <span class="eyebrow anim" data-delay="100" data-i18n="ref.eyebrow">Ons werk</span>
+        <h2 class="panel__title anim" data-delay="200" data-i18n="ref.title">Projecten<br />in Europa.</h2>
       </div>
       <div class="ref__intro-right">
-        <p class="ref__sub anim" data-delay="310">Van de Cooltoren in Rotterdam tot torens in Parijs en Londen — elk project bewijst wat directe fabrieksaccess, technische precisie en groothandelsexpertise in de praktijk kunnen bereiken.</p>
-        <a href="#contact" class="btn btn--fill anim" data-delay="420">Offerte aanvragen</a>
+        <div class="ref__sub-block">
+          <p class="ref__sub anim" data-delay="310" data-i18n="ref.sub">Van de Cooltoren in Rotterdam tot torens in Parijs en Londen — elk project bewijst wat directe fabrieksaccess, technische precisie en groothandelsexpertise in de praktijk kunnen bereiken.</p>
+          <a href="#contact" class="btn btn--fill anim" data-delay="420" data-i18n="cta">Offerte aanvragen</a>
+        </div>
       </div>
     </div>
 
@@ -1281,8 +1372,8 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   ══════════════════════════════════════════ -->
   <section class="contact section" id="contact">
     <div class="contact__left">
-      <span class="eyebrow anim" data-delay="100">Neem contact op</span>
-      <h2 class="panel__title anim" data-delay="200">Vraag een<br />offerte aan.</h2>
+      <span class="eyebrow anim" data-delay="100" data-i18n="contact.eyebrow">Neem contact op</span>
+      <h2 class="panel__title anim" data-delay="200" data-i18n="contact.title">Vraag een<br />offerte aan.</h2>
       <p class="contact__body anim" data-delay="310">
         Geef ons uw specificatie, hoeveelheden en leveringsbestemming.
         Ons team geeft binnen één werkdag een reactie met prijzen en levertijden.
@@ -1416,16 +1507,16 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 
     // Word cycle
     (function () {
-      var words   = ['Zeefdruk glas', 'Gebogen glas', 'Gelaagd glas', 'Gehard glas', 'Brandwerend glas'];
-      var after   = '<br />dat presteert<br />op elke schaal.';
       var cycleEl = document.getElementById('wordCycle');
       var afterEl = document.getElementById('heroCycleAfter');
       if (!cycleEl || !afterEl) return;
-      afterEl.innerHTML = after;
+      afterEl.innerHTML = '<br />dat presteert<br />op elke schaal.';
 
       var idx      = 0;
       var INTERVAL = 2000;
       var EXIT_MS  = 310;
+
+      function getWords() { return window._wcWords || ['Zeefdruk glas', 'Gebogen glas', 'Gelaagd glas', 'Gehard glas', 'Brandwerend glas']; }
 
       function showWord(word, animate) {
         cycleEl.classList.remove('wc-exit', 'wc-enter');
@@ -1435,6 +1526,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       }
 
       function step() {
+        var words = getWords();
         cycleEl.classList.remove('wc-enter');
         void cycleEl.offsetWidth;
         cycleEl.classList.add('wc-exit');
@@ -1444,7 +1536,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
         }, EXIT_MS);
       }
 
-      showWord(words[0], true);
+      showWord(getWords()[0], true);
       setInterval(step, INTERVAL);
     })();
 
@@ -1569,6 +1661,139 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       prev.addEventListener('click', function () { strip.scrollBy({ left: -step(), behavior: 'smooth' }); });
       next.addEventListener('click', function () { strip.scrollBy({ left:  step(), behavior: 'smooth' }); });
     })();
+
+    // Mobile hamburger menu
+    (function () {
+      var burger = document.getElementById('navBurger');
+      var menu   = document.getElementById('navMobileMenu');
+      if (!burger || !menu) return;
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+      });
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          burger.classList.remove('open');
+          menu.classList.remove('open');
+        });
+      });
+    })();
+
+    // Language toggle dropdown
+    (function () {
+      var btn  = document.getElementById('langToggle');
+      var drop = document.getElementById('langDropdown');
+      if (!btn || !drop) return;
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        btn.classList.toggle('open');
+        drop.classList.toggle('open');
+      });
+      document.addEventListener('click', function () {
+        btn.classList.remove('open');
+        drop.classList.remove('open');
+      });
+    })();
+
+    // Translations & language switcher
+    var wordCycleWords = {
+      nl: ['Zeefdruk glas', 'Gebogen glas', 'Gelaagd glas', 'Gehard glas', 'Brandwerend glas'],
+      en: ['Screen-print glass', 'Curved glass', 'Laminated glass', 'Tempered glass', 'Fire-resistant glass']
+    };
+    var wordCycleAfter = {
+      nl: '<br />dat presteert<br />op elke schaal.',
+      en: '<br />that performs<br />at every scale.'
+    };
+
+    var t = {
+      nl: {
+        'nav.about': 'Over ons',
+        'nav.references': 'Referenties',
+        'nav.products': 'Producten',
+        'nav.why': 'Waarom GIGAglas',
+        'nav.cta': 'Offerte aanvragen',
+        'hero.eyebrow': 'Internationale Veiligheidsglasgroothandel',
+        'hero.sub': 'Van oversized geharde panelen tot 18&nbsp;m, gebogen beglazing, brandwerende barri\u00e8res tot precisie gelamineerd en zeefdruk glas \u2014 GIGAglas levert het volledige spectrum veiligheidsbeglazing tegen groothandelsprijzen in Europa.',
+        'hero.btn.products': 'Bekijk producten',
+        'hero.stat1': 'Max. lengte<br>gehard paneel',
+        'hero.stat2': 'Gecertificeerd',
+        'hero.stat3': 'Brandweerstand',
+        'hero.stat4': 'Distributie Europa',
+        'about.eyebrow': 'Wie wij zijn',
+        'about.title': 'Uw strategische<br />partner in<br />veiligheidsbeglazing.',
+        'products.eyebrow': 'Wat wij bieden',
+        'products.title': 'Ons product<br />assortiment',
+        'products.sub': 'Gespecialiseerd in gecertificeerde veiligheidsbeglazing voor grootschalige architectuur- en bouwprojecten. Van oversized geharde panelen tot brandwerende systemen.',
+        'why.eyebrow': 'Ons voordeel',
+        'why.title': 'Waarom<br />GIGAglas?',
+        'ref.eyebrow': 'Ons werk',
+        'ref.title': 'Projecten<br />in Europa.',
+        'ref.sub': 'Van de Cooltoren in Rotterdam tot torens in Parijs en Londen \u2014 elk project bewijst wat directe fabrieksaccess, technische precisie en groothandelsexpertise in de praktijk kunnen bereiken.',
+        'contact.eyebrow': 'Neem contact op',
+        'contact.title': 'Vraag een<br />offerte aan.',
+        'cta': 'Offerte aanvragen'
+      },
+      en: {
+        'nav.about': 'About us',
+        'nav.references': 'References',
+        'nav.products': 'Products',
+        'nav.why': 'Why GIGAglas',
+        'nav.cta': 'Request a quote',
+        'hero.eyebrow': 'International Safety Glass Wholesaler',
+        'hero.sub': 'From oversized tempered panels up to 18&nbsp;m, curved glazing, fire-resistant barriers to precision laminated and screen-print glass \u2014 GIGAglas delivers the full spectrum of safety glazing at wholesale prices across Europe.',
+        'hero.btn.products': 'View products',
+        'hero.stat1': 'Max. length<br>tempered panel',
+        'hero.stat2': 'Certified',
+        'hero.stat3': 'Fire resistance',
+        'hero.stat4': 'European distribution',
+        'about.eyebrow': 'Who we are',
+        'about.title': 'Your strategic<br />partner in<br />safety glazing.',
+        'products.eyebrow': 'What we offer',
+        'products.title': 'Our product<br />range',
+        'products.sub': 'Specialised in certified safety glazing for large-scale architecture and construction projects. From oversized tempered panels to fire-resistant systems.',
+        'why.eyebrow': 'Our advantage',
+        'why.title': 'Why<br />GIGAglas?',
+        'ref.eyebrow': 'Our work',
+        'ref.title': 'Projects<br />across Europe.',
+        'ref.sub': 'From the Cooltoren in Rotterdam to towers in Paris and London \u2014 every project demonstrates what direct factory access, technical precision and wholesale expertise can achieve in practice.',
+        'contact.eyebrow': 'Get in touch',
+        'contact.title': 'Request<br />a quote.',
+        'cta': 'Request a quote'
+      }
+    };
+
+    var currentLang = 'nl';
+
+    function setLanguage(lang) {
+      if (!t[lang]) return;
+      currentLang = lang;
+      document.getElementById('currentLang').textContent = lang.toUpperCase();
+      document.documentElement.lang = lang;
+
+      // Update all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[lang][key] !== undefined) {
+          el.innerHTML = t[lang][key];
+        }
+      });
+
+      // Update word cycle words and after-text
+      var afterEl = document.getElementById('heroCycleAfter');
+      if (afterEl) afterEl.innerHTML = wordCycleAfter[lang];
+      // Store new words so next cycle picks them up
+      window._wcWords = wordCycleWords[lang];
+
+      // Close dropdown
+      document.getElementById('langToggle').classList.remove('open');
+      document.getElementById('langDropdown').classList.remove('open');
+    }
+
+    // Expose globally for onclick handlers
+    window.setLanguage = setLanguage;
+
+    // Hook word cycle to use window._wcWords if set
+    window._wcWords = wordCycleWords.nl;
   </script>
 </body>
 </html>
