@@ -404,7 +404,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .panel--references .panel__title   { color: var(--white); font-size: clamp(1.8rem, 2.6vw, 2.6rem); }
 .panel--references .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
 
-.ref__sub { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-top: 8px; }
+.ref__sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 16px; padding-left: 14px; }
 
 .ref__photos-wrap {
   flex: 1; position: relative; overflow: hidden;
@@ -476,7 +476,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .panel--products .panel__counter{ color: var(--text-light); }
 
 .products__sub {
-  font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; margin-top: 12px;
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-top: 16px; padding-left: 14px;
 }
 
 /* ── Flat Product Card Slider ── */
@@ -630,7 +630,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .panel--why .panel__title  { color: var(--white); }
 
 .why__sub {
-  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75;
+  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 16px; padding-left: 14px;
 }
 
 /* ── USP Feature Cards Grid ── */
