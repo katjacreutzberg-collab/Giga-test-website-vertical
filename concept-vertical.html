@@ -725,6 +725,113 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .concept-badge:hover { transform: translateY(-2px); }
 .concept-badge a { color: inherit; }
+
+/* ═══════════════════════════════════════════
+   TABLET  768 – 1023px
+═══════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  /* Nav */
+  .nav__links { gap: 18px; }
+  .nav__links a { font-size: 0.78rem; }
+
+  /* Hero */
+  .hero { grid-template-columns: 1fr 1fr; }
+  .hero__stats-bar { grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .hero__stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.10); padding: 14px 20px; }
+  .hero__stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.10); }
+  .hero__stat-item:last-child { border-bottom: none; }
+
+  /* About */
+  .about { grid-template-columns: 1fr; }
+  .about__right { padding: clamp(40px,6vw,72px) var(--pad-x); }
+  .stats-col { flex-direction: row; flex-wrap: wrap; }
+  .stat-item { flex: 1 1 45%; }
+  .stat-divider { display: none; }
+
+  /* Products */
+  .products__top { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .products__top-left { padding-right: 0; }
+  .prod-card { min-width: calc(100% / 3); height: 400px; }
+  .prod-card:hover { flex: 2.2 1 0; }
+
+  /* Why */
+  .why__top { flex-direction: column; gap: 16px; align-items: flex-start; padding-bottom: 28px; }
+  .why__top-left { padding-right: 0; }
+  .why__cards { grid-template-columns: repeat(2, 1fr); }
+
+  /* References */
+  .ref__cell { min-width: calc(100% / 3); height: 300px; }
+  .ref__overlay { width: 60%; }
+
+  /* Contact */
+  .contact { grid-template-columns: 1fr; }
+  .contact__left { padding: clamp(48px,7vw,96px) var(--pad-x); }
+  .contact__right { padding: 0 var(--pad-x) clamp(48px,7vw,96px); align-items: flex-start; }
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE  ≤ 767px
+═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* Nav */
+  .nav__links { display: none; }
+  .nav__cta { padding: 8px 16px; font-size: 0.72rem; }
+
+  /* Hero */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: 48px;
+  }
+  .hero__photo { display: none; }
+  .hero__content { padding: 96px var(--pad-x) 40px; }
+  .hero__content::after { display: none; }
+  .hero__actions { flex-direction: column; align-items: flex-start; }
+  .hero__stats-bar {
+    position: static;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(255,255,255,0.10);
+    margin-top: 32px;
+  }
+  .hero__stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.10); padding: 14px 16px; }
+  .hero__stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.10); }
+  .hero__stat-item:last-child, .hero__stat-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+  /* About */
+  .about { grid-template-columns: 1fr; }
+  .about__left { padding: clamp(48px,8vw,72px) var(--pad-x); }
+  .about__right { padding: 40px var(--pad-x) clamp(48px,8vw,72px); }
+  .stats-col { flex-direction: row; flex-wrap: wrap; gap: 0; }
+  .stat-item { flex: 1 1 45%; padding: 16px 0; }
+  .stat-divider { display: none; }
+
+  /* Products */
+  .products__top { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .products__top-left { padding-right: 0; }
+  .product-strip { gap: 0; }
+  .prod-card { min-width: 78vw; height: 340px; flex-shrink: 0; }
+  .prod-card:hover { flex: 1 1 0; } /* disable expand on touch */
+
+  /* Why */
+  .why__top { flex-direction: column; gap: 12px; align-items: flex-start; padding-bottom: 24px; }
+  .why__top-left { padding-right: 0; }
+  .why__cards { grid-template-columns: 1fr; gap: 12px; }
+
+  /* References */
+  .ref__scroll-wrap { margin: 0 calc(-1 * var(--pad-x)); }
+  .ref__cell { min-width: 72vw; height: 260px; }
+  .ref__cell:hover { flex: 1.2 1 0; }
+  .ref__arrow--prev { left: 8px; }
+  .ref__arrow--next { right: 8px; }
+  .ref__overlay { display: none; } /* overlay unusable on touch — hide it */
+  .ref__more { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* Contact */
+  .contact { grid-template-columns: 1fr; }
+  .contact__left { padding: clamp(48px,8vw,72px) var(--pad-x) 32px; }
+  .contact__right { padding: 0 var(--pad-x) clamp(48px,8vw,72px); align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+}
   </style>
 </head>
 <body>
