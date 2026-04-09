@@ -304,7 +304,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
    03 · REFERENCES
 ═══════════════════════════════════════════ */
 .references {
-  background: linear-gradient(145deg, #041f1d 0%, #083a36 20%, #0d524e 50%, #126460 80%, #0f5a56 100%);
+  background: var(--glacial);
   padding: clamp(72px,9vw,120px) var(--pad-x);
 }
 .ref__intro {
@@ -316,15 +316,16 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   padding-right: 48px;
 }
 .ref__intro-left .panel__title { margin-bottom: 0; }
-.references .panel__title   { color: var(--white); }
+.references .panel__title   { color: var(--text); }
 .references .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
 .ref__sub {
   flex: 1; max-width: 540px;
-  border-left: 1px solid rgba(27,159,149,0.35);
+  border-left: 1px solid rgba(27,159,149,0.45);
   padding-left: 40px;
-  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75;
+  font-size: 0.88rem; color: var(--text-mid); line-height: 1.75;
   margin-top: 0;
 }
+
 
 /* Mosaic grid — 18 photos, 6 columns, 4 rows */
 .ref__grid {
@@ -398,13 +399,13 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .ref__more {
   margin-top: 32px; display: flex; align-items: center; gap: 20px;
 }
-.ref__count { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+.ref__count { font-size: 0.78rem; color: var(--text-light); }
 
 /* ═══════════════════════════════════════════
    04 · PRODUCTS
 ═══════════════════════════════════════════ */
 .products {
-  background: var(--glacial);
+  background: linear-gradient(145deg, #041f1d 0%, #083a36 20%, #0d524e 50%, #126460 80%, #0f5a56 100%);
   padding: clamp(72px,9vw,120px) var(--pad-x);
 }
 .products__top {
@@ -413,13 +414,14 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 }
 .products__top-left { flex-shrink: 0; padding-right: 48px; }
 .products__top-left .panel__title { margin-bottom: 0; }
-.products .panel__counter { color: var(--text-light); }
-.products .panel__title   { color: var(--text); }
+.products .panel__counter { color: rgba(255,255,255,0.30); }
+.products .panel__title   { color: var(--white); }
+.products .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
 .products__sub {
   flex: 1; max-width: 540px;
   border-left: 1px solid rgba(27,159,149,0.35);
   padding-left: 40px;
-  font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-top: 0;
+  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 0;
 }
 
 /* Horizontal card strip */
@@ -737,7 +739,96 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   </section>
 
   <!-- ══════════════════════════════════════════
-       03 · REFERENCES
+       03 · PRODUCTS
+  ══════════════════════════════════════════ -->
+  <section class="products section" id="products">
+    <div class="products__top">
+      <div class="products__top-left">
+        <span class="eyebrow anim" data-delay="100">Wat wij bieden</span>
+        <h2 class="panel__title anim" data-delay="200">Ons product<br />assortiment</h2>
+      </div>
+      <p class="products__sub anim" data-delay="310">
+        Gespecialiseerd in gecertificeerde veiligheidsbeglazing voor grootschalige architectuur-
+        en bouwprojecten. Van oversized geharde panelen tot brandwerende systemen.
+      </p>
+    </div>
+
+    <div class="product-strip">
+      <div class="prod-card">
+        <img src="Brand_assets/References/GIGAglas-cooltoren-rotterdam.jpg" alt="Gehard Glas" loading="lazy" />
+        <div class="prod-card__body">
+          <span class="prod-card__num">01</span>
+          <h3 class="prod-card__title">Gehard Glas</h3>
+          <ul class="prod-card__specs">
+            <li>Oversized tot 18&nbsp;m lengte</li>
+            <li>Gebogen / gevormd gehard</li>
+            <li>Constructieve gevel & balustrade</li>
+            <li>EN&nbsp;12150 gecertificeerd</li>
+          </ul>
+          <a href="#contact" class="prod-card__link">Informeer →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-pontsteiger-amsterdam.jpg" alt="Gelaagd Glas" loading="lazy" />
+        <div class="prod-card__body">
+          <span class="prod-card__num">02</span>
+          <h3 class="prod-card__title">Gelaagd Glas</h3>
+          <ul class="prod-card__specs">
+            <li>PVB — standaard & akoestisch</li>
+            <li>EVA — vochtbestendig</li>
+            <li>SentryGlas® (SGP)</li>
+            <li>DG41 — superieure helderheid</li>
+          </ul>
+          <a href="#contact" class="prod-card__link">Informeer →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-cs-arnhem.jpg" alt="Brandwerend Glas" loading="lazy" />
+        <div class="prod-card__body">
+          <span class="prod-card__num">03</span>
+          <h3 class="prod-card__title">Brandwerend Glas</h3>
+          <ul class="prod-card__specs">
+            <li>EW / EI integriteitsklassen</li>
+            <li>30 – 120 minuten klassen</li>
+            <li>Brandwerende omlijsting</li>
+            <li>EN&nbsp;1634 getest</li>
+          </ul>
+          <a href="#contact" class="prod-card__link">Informeer →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-stadionkwartier-eindhoven.jpg" alt="Zeefdruk glas" loading="lazy" />
+        <div class="prod-card__body">
+          <span class="prod-card__num">04</span>
+          <h3 class="prod-card__title">Zeefdruk glas</h3>
+          <ul class="prod-card__specs">
+            <li>Volledige bedrukkingsdekking</li>
+            <li>RAL / maatwerkkleur</li>
+            <li>Gecombineerd met harden</li>
+            <li>Buiten- & binnentoepassing</li>
+          </ul>
+          <a href="#contact" class="prod-card__link">Informeer →</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas (11).jpg" alt="Gebogen Glas" loading="lazy" />
+        <div class="prod-card__body">
+          <span class="prod-card__num">05</span>
+          <h3 class="prod-card__title">Gebogen Glas</h3>
+          <ul class="prod-card__specs">
+            <li>Enkelvoudig & dubbel gebogen</li>
+            <li>Gebogen & gelaagd gecombineerd</li>
+            <li>Radius op maat</li>
+            <li>Gevel, dak & interieur</li>
+          </ul>
+          <a href="#contact" class="prod-card__link">Informeer →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       04 · REFERENCES
   ══════════════════════════════════════════ -->
   <section class="references section" id="references">
     <div class="ref__intro">
@@ -920,95 +1011,6 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <div class="ref__more anim" data-delay="600">
       <a href="#contact" class="btn btn--fill">Offerte aanvragen</a>
       <span class="ref__count">18 projecten — Nederland, België, Duitsland, Frankrijk, Engeland</span>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════
-       04 · PRODUCTS
-  ══════════════════════════════════════════ -->
-  <section class="products section" id="products">
-    <div class="products__top">
-      <div class="products__top-left">
-        <span class="eyebrow anim" data-delay="100">Wat wij bieden</span>
-        <h2 class="panel__title anim" data-delay="200">Ons product<br />assortiment</h2>
-      </div>
-      <p class="products__sub anim" data-delay="310">
-        Gespecialiseerd in gecertificeerde veiligheidsbeglazing voor grootschalige architectuur-
-        en bouwprojecten. Van oversized geharde panelen tot brandwerende systemen.
-      </p>
-    </div>
-
-    <div class="product-strip">
-      <div class="prod-card">
-        <img src="Brand_assets/References/GIGAglas-cooltoren-rotterdam.jpg" alt="Gehard Glas" loading="lazy" />
-        <div class="prod-card__body">
-          <span class="prod-card__num">01</span>
-          <h3 class="prod-card__title">Gehard Glas</h3>
-          <ul class="prod-card__specs">
-            <li>Oversized tot 18&nbsp;m lengte</li>
-            <li>Gebogen / gevormd gehard</li>
-            <li>Constructieve gevel & balustrade</li>
-            <li>EN&nbsp;12150 gecertificeerd</li>
-          </ul>
-          <a href="#contact" class="prod-card__link">Informeer →</a>
-        </div>
-      </div>
-      <div class="prod-card">
-        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-pontsteiger-amsterdam.jpg" alt="Gelaagd Glas" loading="lazy" />
-        <div class="prod-card__body">
-          <span class="prod-card__num">02</span>
-          <h3 class="prod-card__title">Gelaagd Glas</h3>
-          <ul class="prod-card__specs">
-            <li>PVB — standaard & akoestisch</li>
-            <li>EVA — vochtbestendig</li>
-            <li>SentryGlas® (SGP)</li>
-            <li>DG41 — superieure helderheid</li>
-          </ul>
-          <a href="#contact" class="prod-card__link">Informeer →</a>
-        </div>
-      </div>
-      <div class="prod-card">
-        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-cs-arnhem.jpg" alt="Brandwerend Glas" loading="lazy" />
-        <div class="prod-card__body">
-          <span class="prod-card__num">03</span>
-          <h3 class="prod-card__title">Brandwerend Glas</h3>
-          <ul class="prod-card__specs">
-            <li>EW / EI integriteitsklassen</li>
-            <li>30 – 120 minuten klassen</li>
-            <li>Brandwerende omlijsting</li>
-            <li>EN&nbsp;1634 getest</li>
-          </ul>
-          <a href="#contact" class="prod-card__link">Informeer →</a>
-        </div>
-      </div>
-      <div class="prod-card">
-        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-stadionkwartier-eindhoven.jpg" alt="Zeefdruk glas" loading="lazy" />
-        <div class="prod-card__body">
-          <span class="prod-card__num">04</span>
-          <h3 class="prod-card__title">Zeefdruk glas</h3>
-          <ul class="prod-card__specs">
-            <li>Volledige bedrukkingsdekking</li>
-            <li>RAL / maatwerkkleur</li>
-            <li>Gecombineerd met harden</li>
-            <li>Buiten- & binnentoepassing</li>
-          </ul>
-          <a href="#contact" class="prod-card__link">Informeer →</a>
-        </div>
-      </div>
-      <div class="prod-card">
-        <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas (11).jpg" alt="Gebogen Glas" loading="lazy" />
-        <div class="prod-card__body">
-          <span class="prod-card__num">05</span>
-          <h3 class="prod-card__title">Gebogen Glas</h3>
-          <ul class="prod-card__specs">
-            <li>Enkelvoudig & dubbel gebogen</li>
-            <li>Gebogen & gelaagd gecombineerd</li>
-            <li>Radius op maat</li>
-            <li>Gevel, dak & interieur</li>
-          </ul>
-          <a href="#contact" class="prod-card__link">Informeer →</a>
-        </div>
-      </div>
     </div>
   </section>
 
