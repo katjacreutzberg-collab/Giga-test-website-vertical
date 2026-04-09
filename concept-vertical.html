@@ -76,6 +76,9 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   transform: translateY(-1px);
 }
 
+/* Nav right group */
+.nav__right { display: flex; align-items: center; gap: 10px; }
+
 /* Language toggle */
 .nav__lang { position: relative; }
 .nav__lang-btn {
@@ -1032,20 +1035,22 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
         <a href="#products" data-i18n="nav.products">Producten</a>
         <a href="#why" data-i18n="nav.why">Waarom GIGAglas</a>
       </nav>
-      <div class="nav__lang">
-        <button class="nav__lang-btn" id="langToggle" aria-label="Taal">
-          <span id="currentLang">NL</span>
-          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
-        </button>
-        <div class="nav__lang-dropdown" id="langDropdown">
-          <button onclick="setLanguage('nl')">NL — Nederlands</button>
-          <button onclick="setLanguage('en')">EN — English</button>
+      <div class="nav__right">
+        <div class="nav__lang">
+          <button class="nav__lang-btn" id="langToggle" aria-label="Taal">
+            <span id="currentLang">NL</span>
+            <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+          </button>
+          <div class="nav__lang-dropdown" id="langDropdown">
+            <button onclick="setLanguage('nl')">NL — Nederlands</button>
+            <button onclick="setLanguage('en')">EN — English</button>
+          </div>
         </div>
+        <a href="#contact" class="nav__cta" data-i18n="nav.cta">Offerte aanvragen</a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <a href="#contact" class="nav__cta" data-i18n="nav.cta">Offerte aanvragen</a>
-      <button class="nav__burger" id="navBurger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
