@@ -217,7 +217,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   border-top: 1px solid rgba(255,255,255,0.12);
 }
 .hero__stat-item {
-  padding: 20px var(--pad-x);
+  padding: 16px clamp(12px, 1.8vw, 28px);
   border-right: 1px solid rgba(255,255,255,0.10);
   display: flex; flex-direction: column; gap: 4px;
 }
@@ -225,10 +225,11 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .hero__stat-num {
   font-family: var(--font-disp); font-size: clamp(1.1rem, 1.8vw, 1.6rem);
   font-weight: 700; color: var(--white); letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 .hero__stat-label {
-  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  font-size: 0.60rem; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); line-height: 1.4;
 }
 
 /* ═══════════════════════════════════════════
@@ -934,7 +935,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <div class="hero__stats-bar">
       <div class="hero__stat-item">
         <div class="hero__stat-num" data-count="18" data-suffix=" m">18 m</div>
-        <div class="hero__stat-label">Max. lengte gehard paneel</div>
+        <div class="hero__stat-label">Max. lengte<br>gehard paneel</div>
       </div>
       <div class="hero__stat-item">
         <div class="hero__stat-num">CE</div>
