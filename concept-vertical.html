@@ -351,17 +351,49 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
 .ref__cell img {
   width: 100%; height: 100%; object-fit: cover;
   filter: brightness(0.52) saturate(0.85);
-  transition: filter 0.5s var(--ease), transform 0.7s var(--ease);
+  transform: scale(1.08);
+  transition: filter 0.65s var(--ease), transform 1.0s var(--ease);
 }
-.ref__cell:hover img { filter: brightness(0.80) saturate(1.05); transform: scale(1.04); }
+.ref__cell:hover img { filter: brightness(0.85) saturate(1.05); transform: scale(1.0); }
+
 .ref__cell-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 40px 18px 16px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
-  display: flex; flex-direction: column; gap: 4px;
+  padding: 64px 18px 18px;
+  background: linear-gradient(to top, rgba(4,18,16,0.97) 0%, rgba(4,18,16,0.82) 50%, transparent 100%);
+  display: flex; flex-direction: column; gap: 6px;
+  transition: background 0.65s var(--ease);
 }
-.ref__name { font-family: var(--font-disp); font-size: 0.85rem; font-weight: 700; color: var(--white); line-height: 1.2; }
-.ref__type { font-size: 0.63rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+.ref__cell:hover .ref__cell-overlay {
+  background: linear-gradient(to top, rgba(4,18,16,0.96) 0%, rgba(4,18,16,0.60) 38%, transparent 62%);
+}
+
+.ref__name { font-family: var(--font-disp); font-size: 0.88rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+.ref__type { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+
+.ref__specs { display: flex; flex-direction: column; gap: 3px; }
+.ref__specs li {
+  font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.6);
+  display: flex; align-items: center; gap: 6px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.35s, transform 0.35s;
+}
+.ref__cell:hover .ref__specs li { opacity: 1; transform: none; }
+.ref__cell:hover .ref__specs li:nth-child(1) { transition-delay: 0.05s; }
+.ref__cell:hover .ref__specs li:nth-child(2) { transition-delay: 0.10s; }
+.ref__cell:hover .ref__specs li:nth-child(3) { transition-delay: 0.15s; }
+.ref__specs li::before {
+  content: ''; width: 4px; height: 4px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
+}
+.ref__enquire {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--teal); display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 4px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.35s 0.18s, transform 0.35s 0.18s, color 0.2s, gap 0.2s;
+}
+.ref__cell:hover .ref__enquire { opacity: 1; transform: none; }
+.ref__enquire:hover { color: var(--white); gap: 10px; }
 
 .ref__more {
   margin-top: 32px; display: flex; align-items: center; gap: 20px;
@@ -706,81 +738,171 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     </div>
 
     <div class="ref__grid">
-      <!-- Row 1: span2 + 1 + 1 + span2 = 4 photos -->
+      <!-- Row 1 -->
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-cooltoren-rotterdam.jpg" alt="Cooltoren, Rotterdam" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Cooltoren, Rotterdam</span><span class="ref__type">Gehard glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gehard glas</span>
+          <span class="ref__name">Cooltoren, Rotterdam</span>
+          <ul class="ref__specs"><li>Oversized geharde panelen</li><li>Constructieve balkons & gevel</li><li>Hoge windlastklasse</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-Nieuw-babylon.jpg" alt="Nieuw Babylon" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Nieuw Babylon, Den Haag</span><span class="ref__type">Constructief gehard glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Constructief gehard glas</span>
+          <span class="ref__name">Nieuw Babylon, Den Haag</span>
+          <ul class="ref__specs"><li>Extra sterk constructief gehard</li><li>Gevel & balustrade</li><li>EN 12150 gecertificeerd</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-Calypso-rotterdam.jpg" alt="Calypso, Rotterdam" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Calypso, Rotterdam</span><span class="ref__type">Gelamineerde gevelbeglazing</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelamineerde gevelbeglazing</span>
+          <span class="ref__name">Calypso, Rotterdam</span>
+          <ul class="ref__specs"><li>Oversized gelaagde gevelplaten</li><li>PVB veiligheidsinterlayer</li><li>Hoge windlastklasse</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-zalmhaven-rotterdam-2.jpg" alt="Zalmhaven" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Zalmhaven, Rotterdam</span><span class="ref__type">Gelaagd glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelaagd glas</span>
+          <span class="ref__name">Zalmhaven, Rotterdam</span>
+          <ul class="ref__specs"><li>SGP/PVB tussenlaag</li><li>Oversized formaten</li><li>High-rise toepassing</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
-      <!-- Row 2: 1 + span2 + 1 + 1 + 1 = 5 photos -->
+      <!-- Row 2 -->
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-pontsteiger-amsterdam.jpg" alt="Pontsteiger" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Pontsteiger, Amsterdam</span><span class="ref__type">Gelamineerde gevelbeglazing</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelamineerde gevelbeglazing</span>
+          <span class="ref__name">Pontsteiger, Amsterdam</span>
+          <ul class="ref__specs"><li>SGP veiligheidsinterlayer</li><li>Oversized gevelplaten</li><li>Waterkant locatie</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-jules-ladoumegue.jpg" alt="Jules Ladoumègue" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Jules Ladoumègue, Paris</span><span class="ref__type">Zeefdruk glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Zeefdruk glas</span>
+          <span class="ref__name">Jules Ladoumègue, Paris</span>
+          <ul class="ref__specs"><li>RAL maatwerkdekking</li><li>Gecombineerd met harden</li><li>Buitengeveltoepassing</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-de-rotterdam.jpg" alt="De Rotterdam" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">De Rotterdam</span><span class="ref__type">Gelaagd glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelaagd glas</span>
+          <span class="ref__name">De Rotterdam</span>
+          <ul class="ref__specs"><li>PVB veiligheidsinterlayer</li><li>Akoestisch gelaagd</li><li>Grote geveloppervlakken</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-the-one-tower-bridge.jpg" alt="The One Tower Bridge" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">The One, Tower Bridge</span><span class="ref__type">Gordijngevelglazing</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gordijngevelglazing</span>
+          <span class="ref__name">The One, Tower Bridge</span>
+          <ul class="ref__specs"><li>Volledig curtain wall systeem</li><li>Thermisch & akoestisch</li><li>High-rise geveloplossing</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-bergopwaarts.jpg" alt="Bergopwaarts, Deurne" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Bergopwaarts, Deurne</span><span class="ref__type">Gehard glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gehard glas</span>
+          <span class="ref__name">Bergopwaarts, Deurne</span>
+          <ul class="ref__specs"><li>Oversized geharde panelen</li><li>Balustrade & gevel</li><li>EN 12150 gecertificeerd</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
-      <!-- Row 3: 1 + 1 + span2 + 1 + 1 = 5 photos -->
+      <!-- Row 3 -->
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-cs-arnhem.jpg" alt="CS Arnhem" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">CS Arnhem</span><span class="ref__type">Gebogen glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gebogen glas</span>
+          <span class="ref__name">CS Arnhem</span>
+          <ul class="ref__specs"><li>Enkelvoudig gebogen</li><li>Constructief gehard</li><li>Dak & gevelconstructie</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-zac-seguin.jpg" alt="ZAC Seguin" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">ZAC Seguin, Boulogne</span><span class="ref__type">Gordijngevelglazing</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gordijngevelglazing</span>
+          <span class="ref__name">ZAC Seguin, Boulogne</span>
+          <ul class="ref__specs"><li>Curtain wall systeem</li><li>Thermisch geïsoleerd</li><li>Structureel beglaasd</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-stadionkwartier-eindhoven.jpg" alt="Stadionkwartier" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Stadionkwartier, Eindhoven</span><span class="ref__type">Zeefdruk glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Zeefdruk glas</span>
+          <span class="ref__name">Stadionkwartier, Eindhoven</span>
+          <ul class="ref__specs"><li>Volledige zeefdrukdekking</li><li>RAL maatwerkkleur</li><li>Gecombineerd met harden</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-Orleans-ziekenhuis.jpg" alt="Orléans Ziekenhuis" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Orléans Ziekenhuis</span><span class="ref__type">Brandwerend glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Brandwerend glas</span>
+          <span class="ref__name">Orléans Ziekenhuis</span>
+          <ul class="ref__specs"><li>EI 60 / EI 120 klassen</li><li>Zorginstelling toepassing</li><li>EN 1634 gecertificeerd</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-de-drie-leeuwen.jpg" alt="De Drie Leeuwen" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">De Drie Leeuwen</span><span class="ref__type">Brandwerend glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Brandwerend glas</span>
+          <span class="ref__name">De Drie Leeuwen</span>
+          <ul class="ref__specs"><li>EW / EI integriteitsklassen</li><li>30–120 minuten klassen</li><li>Brandwerende omlijsting</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
-      <!-- Row 4: span2 + 1 + 1 + span2 = 4 photos -->
+      <!-- Row 4 -->
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-brainport-reclamemast-eindhoven.jpg" alt="Brainport, Eindhoven" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Brainport, Eindhoven</span><span class="ref__type">Zeefdruk glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Zeefdruk glas</span>
+          <span class="ref__name">Brainport, Eindhoven</span>
+          <ul class="ref__specs"><li>Maatwerkbedrukking</li><li>RAL kleurmatch</li><li>Grote geveloppervlakken</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-fietsenstalling.jpg" alt="Fietsenstalling" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Fietsenstalling</span><span class="ref__type">Gehard glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gehard glas</span>
+          <span class="ref__name">Fietsenstalling</span>
+          <ul class="ref__specs"><li>Constructief gehard</li><li>Buitentoepassing</li><li>Corrosiebestendig</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-geluidschermen-snelwegprojecten.jpg" alt="Geluidschermen" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Geluidschermen</span><span class="ref__type">Gelaagd glas</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelaagd glas</span>
+          <span class="ref__name">Geluidschermen</span>
+          <ul class="ref__specs"><li>Akoestisch gelaagd glas</li><li>Snelwegtoepassing</li><li>CE-gecertificeerd</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
       <div class="ref__cell">
         <img src="Brand_assets/References/GIGAglas-gehardglas-gelamineerdglas-gebogenglas-zeefdrukglas-parktoren-amsterdam.jpg" alt="Parktoren, Antwerpen" loading="lazy" />
-        <div class="ref__cell-overlay"><span class="ref__name">Parktoren, Antwerpen</span><span class="ref__type">Gelamineerde gevelbeglazing</span></div>
+        <div class="ref__cell-overlay">
+          <span class="ref__type">Gelamineerde gevelbeglazing</span>
+          <span class="ref__name">Parktoren, Antwerpen</span>
+          <ul class="ref__specs"><li>Oversized gelaagde panelen</li><li>PVB veiligheidsinterlayer</li><li>High-rise toepassing</li></ul>
+          <a href="#contact" class="ref__enquire">Informeer →</a>
+        </div>
       </div>
     </div>
 
