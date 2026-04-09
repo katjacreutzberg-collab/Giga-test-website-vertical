@@ -308,14 +308,22 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   padding: clamp(72px,9vw,120px) var(--pad-x);
 }
 .ref__intro {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  gap: 40px; margin-bottom: 48px;
+  display: flex; align-items: flex-end;
+  gap: 0; margin-bottom: 48px;
 }
-.ref__intro-left { flex: 1; }
-.references .panel__counter { color: rgba(255,255,255,0.30); }
+.ref__intro-left {
+  flex-shrink: 0;
+  padding-right: 48px;
+}
 .references .panel__title   { color: var(--white); }
 .references .eyebrow        { color: var(--teal); border-left-color: var(--teal); }
-.ref__sub { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75; margin-top: 16px; padding-left: 14px; }
+.ref__sub {
+  flex: 1; max-width: 540px;
+  border-left: 1px solid rgba(27,159,149,0.35);
+  padding-left: 40px;
+  font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.75;
+  margin-top: 0;
+}
 
 /* Mosaic grid — 18 photos, 6 columns, 4 rows */
 .ref__grid {
