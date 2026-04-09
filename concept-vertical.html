@@ -658,7 +658,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
     <div class="about__right">
       <div class="stats-col">
         <div class="stat-item anim" data-delay="160">
-          <span class="stat__num">18 m</span>
+          <span class="stat__num" data-count="18" data-suffix=" m">18 m</span>
           <span class="stat__label">Max. lengte gehard paneel</span>
         </div>
         <div class="stat-divider"></div>
@@ -668,7 +668,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item anim" data-delay="340">
-          <span class="stat__num">EI 120</span>
+          <span class="stat__num" data-count="120" data-prefix="EI ">EI 120</span>
           <span class="stat__label">Max. brandweerstandsklasse</span>
         </div>
         <div class="stat-divider"></div>
@@ -957,12 +957,35 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       el.style.transitionDelay = el.getAttribute('data-delay') + 'ms';
     });
 
+    // Stat counter animation (identical to main.js)
+    var statsDone = false;
+    function animateStatCounters() {
+      if (statsDone) return;
+      statsDone = true;
+      document.querySelectorAll('.stat__num[data-count]').forEach(function(el) {
+        var target   = parseInt(el.getAttribute('data-count'), 10);
+        var prefix   = el.getAttribute('data-prefix') || '';
+        var suffix   = el.getAttribute('data-suffix') || '';
+        var start    = null;
+        var DURATION = 1400;
+        function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+        function tick(timestamp) {
+          if (!start) start = timestamp;
+          var progress = Math.min((timestamp - start) / DURATION, 1);
+          el.textContent = prefix + Math.round(easeOut(progress) * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+
     // IntersectionObserver — same threshold as main site
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('section--visible');
+            if (entry.target.id === 'about') animateStatCounters();
           }
         });
       }, { threshold: 0.12 });
