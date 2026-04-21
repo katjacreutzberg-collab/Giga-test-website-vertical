@@ -187,15 +187,26 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   .footer__inner{grid-template-columns:1fr;gap:28px;}.footer__bottom{flex-direction:column;align-items:flex-start;gap:8px;}
   .panel__title{font-size:clamp(1.6rem,6.5vw,2.2rem);}
 }
-  </style>
+  .nav__lang { position: relative; }
+.nav__lang-btn { display: flex; align-items: center; gap: 5px; background: none; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; padding: 9px 11px; cursor: pointer; font-family: var(--font); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); transition: border-color 0.2s, color 0.2s; line-height: 1; }
+.nav__lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+.nav__lang-btn svg { transition: transform 0.2s; }
+.nav__lang-btn.open svg { transform: rotate(180deg); }
+.nav__lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 160px; overflow: hidden; z-index: 300; }
+.nav__lang-dropdown.open { display: block; }
+.nav__lang-dropdown button { display: block; width: 100%; padding: 12px 16px; background: none; border: none; cursor: pointer; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid); text-align: left; font-family: var(--font); transition: background 0.2s, color 0.2s; }
+.nav__lang-dropdown button:hover { background: var(--glacial); color: var(--teal); }
+</style>
 </head>
 <body>
+  <!-- NAV -->
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="/"><img src="Brand_assets/Logo/Logo - GIGAglas - Left alligned - Blue.png" alt="GIGAglas" class="nav__logo-img" /></a>
+      <a href="/">
+        <img src="Brand_assets/Logo/Logo - GIGAglas - Left alligned - Blue.png" alt="GIGAglas" class="nav__logo-img" />
+      </a>
       <nav class="nav__links">
         <a href="/#about">Over ons</a>
-        <a href="/#references">Referenties</a>
         <div class="nav__dropdown">
           <a href="/#products" class="nav__dropdown-trigger">Producten
             <svg viewBox="0 0 10 6" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
@@ -203,10 +214,46 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
           <div class="nav__dropdown-menu">
             <a href="/gehard-glas">Gehard Glas</a>
             <a href="/gelaagd-glas">Gelaagd Glas</a>
-            <a href="/brandwerend-glas">Brandwerend Glas</a>
-            <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
             <a href="/gebogen-glas">Gebogen Glas</a>
+            <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
+            <a href="/brandwerend-glas">Brandwerend Glas</a>
           </div>
+        </div>
+        <a href="/#why">Waarom GIGAglas</a>
+        <a href="/#references">Referenties</a>
+      </nav>
+      <div class="nav__right">
+        <div class="nav__lang" id="prodLang">
+          <button class="nav__lang-btn" id="prodLangBtn" aria-label="Taal">
+            <span>NL</span>
+            <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+          </button>
+          <div class="nav__lang-dropdown" id="prodLangDrop">
+            <button onclick="document.getElementById('prodLangDrop').classList.remove('open');document.getElementById('prodLangBtn').classList.remove('open')">NL — Nederlands</button>
+            <button onclick="localStorage.setItem('lang','en');window.location.href='/'">EN — English</button>
+          </div>
+        </div>
+        <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div class="nav__mobile-menu" id="navMobileMenu">
+    <a href="/#about">Over ons</a>
+    <a href="/#products">Producten</a>
+    <div class="nav__mobile-sub">
+      <a href="/gehard-glas">Gehard Glas</a>
+      <a href="/gelaagd-glas">Gelaagd Glas</a>
+      <a href="/gebogen-glas">Gebogen Glas</a>
+      <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
+      <a href="/brandwerend-glas">Brandwerend Glas</a>
+    </div>
+    <a href="/#why">Waarom GIGAglas</a>
+    <a href="/#references">Referenties</a>
+    <a href="/#contact" class="nav__cta-mobile">Offerte aanvragen</a>
+  </div>
         </div>
         <a href="/#why">Waarom GIGAglas</a>
       </nav>
