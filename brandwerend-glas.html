@@ -222,14 +222,24 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
             <a href="/gehard-glas">Gehard Glas</a>
             <a href="/gelaagd-glas">Gelaagd Glas</a>
             <a href="/brandwerend-glas">Brandwerend Glas</a>
-            <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+            <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
             <a href="/gebogen-glas">Gebogen Glas</a>
           </div>
         </div>
         <a href="/#why">Waarom GIGAglas</a>
       </nav>
       <div class="nav__right">
-        <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
+        <div class="nav__lang" id="prodLang">
+        <button class="nav__lang-btn" id="prodLangBtn" aria-label="Taal">
+          <span>NL</span>
+          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+        </button>
+        <div class="nav__lang-dropdown" id="prodLangDrop">
+          <button onclick="document.getElementById('prodLangDrop').classList.remove('open');document.getElementById('prodLangBtn').classList.remove('open')">NL — Nederlands</button>
+          <button onclick="localStorage.setItem('lang','en');window.location.href='/'">EN — English</button>
+        </div>
+      </div>
+      <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
         <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -242,7 +252,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <a href="/gehard-glas">Gehard Glas</a>
       <a href="/gelaagd-glas">Gelaagd Glas</a>
       <a href="/brandwerend-glas">Brandwerend Glas</a>
-      <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+      <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
       <a href="/gebogen-glas">Gebogen Glas</a>
     </div>
     <a href="/#why">Waarom GIGAglas</a>
@@ -466,7 +476,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
           <a href="/gehard-glas">Gehard Glas</a>
           <a href="/gelaagd-glas">Gelaagd Glas</a>
           <a href="/brandwerend-glas">Brandwerend Glas</a>
-          <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+          <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
           <a href="/gebogen-glas">Gebogen Glas</a>
         </nav>
       </div>
@@ -487,6 +497,19 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     document.querySelector('.hero').classList.add('section--visible');
     (function(){var cards=document.querySelectorAll('.why-card');if(!cards.length)return;var def=document.querySelector('.why-card--featured');var isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;function setF(c){cards.forEach(function(x){x.classList.remove('why-card--featured');});c.classList.add('why-card--featured');}function resetF(){cards.forEach(function(x){x.classList.remove('why-card--featured');});if(def)def.classList.add('why-card--featured');}if(isTouch){cards.forEach(function(c){c.addEventListener('click',function(){setF(c);});});}else{cards.forEach(function(c){c.addEventListener('mouseenter',function(){setF(c);});});var wc=document.querySelector('.why__cards');if(wc)wc.addEventListener('mouseleave',resetF);}})();
     (function(){var b=document.getElementById('navBurger');var m=document.getElementById('navMobileMenu');if(!b||!m)return;b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');m.classList.remove('open');});});})();
-  </script>
+  
+  // Language button
+  document.getElementById('prodLangBtn').addEventListener('click', function() {
+    document.getElementById('prodLangDrop').classList.toggle('open');
+    this.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    var c = document.getElementById('prodLang');
+    if (c && !c.contains(e.target)) {
+      document.getElementById('prodLangDrop').classList.remove('open');
+      document.getElementById('prodLangBtn').classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

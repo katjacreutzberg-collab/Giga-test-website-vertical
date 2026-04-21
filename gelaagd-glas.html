@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gelaagd Veiligheidsglas — GIGAglas | PVB, SGP, DG41, CE-gecertificeerd EN 14449</title>
-  <meta name="description" content="GIGAglas levert gelaagd veiligheidsglas met PVB, EVA, SentryGlas® (SGP) en DG41 interlayers — CE-gecertificeerd conform EN 14449. Akoestisch, inbraakwerend, val-bestendig. Groothandelsprijzen, levering door Europa." />
+  <meta name="description" content="GIGAglas levert gelaagd veiligheidsglas met PVB, EVA, SentryGlas® (SGP) en DG41 folies — CE-gecertificeerd conform EN 14449. Akoestisch, inbraakwerend, val-bestendig. Groothandelsprijzen, levering door Europa." />
   <link rel="canonical" href="https://giga-test-website-vertical.vercel.app/gelaagd-glas" />
   <link rel="stylesheet" href="fonts.css" />
   <style>
@@ -232,14 +232,24 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
             <a href="/gehard-glas">Gehard Glas</a>
             <a href="/gelaagd-glas">Gelaagd Glas</a>
             <a href="/brandwerend-glas">Brandwerend Glas</a>
-            <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+            <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
             <a href="/gebogen-glas">Gebogen Glas</a>
           </div>
         </div>
         <a href="/#why">Waarom GIGAglas</a>
       </nav>
       <div class="nav__right">
-        <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
+        <div class="nav__lang" id="prodLang">
+        <button class="nav__lang-btn" id="prodLangBtn" aria-label="Taal">
+          <span>NL</span>
+          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+        </button>
+        <div class="nav__lang-dropdown" id="prodLangDrop">
+          <button onclick="document.getElementById('prodLangDrop').classList.remove('open');document.getElementById('prodLangBtn').classList.remove('open')">NL — Nederlands</button>
+          <button onclick="localStorage.setItem('lang','en');window.location.href='/'">EN — English</button>
+        </div>
+      </div>
+      <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
         <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -252,7 +262,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <a href="/gehard-glas">Gehard Glas</a>
       <a href="/gelaagd-glas">Gelaagd Glas</a>
       <a href="/brandwerend-glas">Brandwerend Glas</a>
-      <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+      <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
       <a href="/gebogen-glas">Gebogen Glas</a>
     </div>
     <a href="/#why">Waarom GIGAglas</a>
@@ -262,8 +272,8 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <section class="hero section" id="hero">
     <div class="hero__content">
       <span class="eyebrow anim" data-delay="80">Veiligheidsglas — Product 02</span>
-      <h1 class="hero__headline anim" data-delay="180">Gelaagd<br /><span class="accent">Veiligheids</span>glas<br />met interlayer</h1>
-      <p class="hero__sub anim" data-delay="320">CE-gecertificeerd gelaagd glas met PVB, EVA, SGP — SentryGlas® en PVB interlayers — voor balustrades, gevels en akoestische toepassingen. Rechtstreeks vanuit onze partner fabrieken, groothandelsprijzen, levering door Europa.</p>
+      <h1 class="hero__headline anim" data-delay="180">Gelaagd<br /><span class="accent">Veiligheids</span>glas<br />met folie</h1>
+      <p class="hero__sub anim" data-delay="320">CE-gecertificeerd gelaagd glas met PVB, EVA, SGP — SentryGlas® en PVB folies — voor balustrades, gevels en akoestische toepassingen. Rechtstreeks vanuit onze partner fabrieken, groothandelsprijzen, levering door Europa.</p>
       <div class="hero__actions anim" data-delay="460">
         <a href="/#contact" class="btn btn--fill">Offerte aanvragen</a>
         <a href="/#products" class="btn btn--outline">Alle producten</a>
@@ -274,7 +284,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <div class="hero__photo-caption">Pontsteiger, Amsterdam — gelaagd glas balustrades</div>
     </div>
     <div class="hero__stats-bar">
-      <div class="hero__stat-item"><div class="hero__stat-num">PVB/SGP</div><div class="hero__stat-label">Interlayer opties</div></div>
+      <div class="hero__stat-item"><div class="hero__stat-num">PVB/SGP</div><div class="hero__stat-label">Folie opties</div></div>
       <div class="hero__stat-item"><div class="hero__stat-num">CE</div><div class="hero__stat-label">Gecertificeerd EN&nbsp;14449</div></div>
       <div class="hero__stat-item"><div class="hero__stat-num">P1A–P8B</div><div class="hero__stat-label">Inbraakweerstand klassen</div></div>
       <div class="hero__stat-item"><div class="hero__stat-num">EU</div><div class="hero__stat-label">Distributie Europa</div></div>
@@ -286,9 +296,9 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <section class="prod-intro section" id="intro">
     <div class="prod-intro__left">
       <span class="eyebrow anim" data-delay="80">Wat is gelaagd glas?</span>
-      <h2 class="panel__title anim" data-delay="180">Twee of meer<br />glaslagen, verbonden<br />door een interlayer.</h2>
-      <p class="prod-intro__body anim" data-delay="280">Gelaagd veiligheidsglas — ook wel laminaatglas of VSG (Verbundsicherheitsglas) — bestaat uit twee of meer glaslagen die permanent verbonden zijn door een thermoplastische tussenlaag (interlayer). Bij breuk blijven de scherven aan de folie kleven, zodat er geen gevaarlijke rondvliegende stukken ontstaan.</p>
-      <p class="prod-intro__body anim" data-delay="360">De keuze van de interlayer bepaalt de prestaties: standaard PVB voor veiligheid, akoestisch PVB voor geluidsreductie, EVA voor vochtbestendigheid, SentryGlas® (SGP) voor constructieve toepassingen met hoge belasting, en DG41 voor uitzonderlijke optische helderheid.</p>
+      <h2 class="panel__title anim" data-delay="180">Twee of meer<br />glaslagen, verbonden<br />door een folie.</h2>
+      <p class="prod-intro__body anim" data-delay="280">Gelaagd veiligheidsglas — ook wel laminaatglas of VSG (Verbundsicherheitsglas) — bestaat uit twee of meer glaslagen die permanent verbonden zijn door een thermoplastische tussenlaag (folie). Bij breuk blijven de scherven aan de folie kleven, zodat er geen gevaarlijke rondvliegende stukken ontstaan.</p>
+      <p class="prod-intro__body anim" data-delay="360">De keuze van de folie bepaalt de prestaties: standaard PVB voor veiligheid, akoestisch PVB voor geluidsreductie, EVA voor vochtbestendigheid, SentryGlas® (SGP) voor constructieve toepassingen met hoge belasting, en DG41 voor uitzonderlijke optische helderheid.</p>
       <div class="cert-badges anim" data-delay="440">
         <span class="cert-badge">EN 14449</span>
         <span class="cert-badge">CE-gecertificeerd</span>
@@ -301,7 +311,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       </div>
     </div>
     <div class="prod-intro__right">
-      <span class="eyebrow">Interlayer opties</span>
+      <span class="eyebrow">Folie opties</span>
       <div class="prod-stat anim" data-delay="150">
         <span class="prod-stat__num">PVB</span>
         <span class="prod-stat__label">standaard & akoestisch — meest toegepast</span>
@@ -328,18 +338,18 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
           <span class="eyebrow anim" data-delay="80">Onze meerwaarde</span>
           <h2 class="panel__title anim" data-delay="180">Waarom GIGAglas<br />voor gelaagd glas?</h2>
         </div>
-        <p class="prod-benefits__sub anim" data-delay="280">Wij leveren gelaagd glas met de juiste interlayer voor uw toepassing — gecombineerd met gehard glas, coatings of zeefdruk. Geen standaardoplossingen, maar precisie op specificatie.</p>
+        <p class="prod-benefits__sub anim" data-delay="280">Wij leveren gelaagd glas met de juiste folie voor uw toepassing — gecombineerd met gehard glas, coatings of zeefdruk. Geen standaardoplossingen, maar precisie op specificatie.</p>
       </div>
       <div class="why__cards">
         <div class="why-card" data-num="01">
           <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <h4 class="why-card__title">Veiligheidsretentie bij breuk</h4>
-          <p class="why-card__body">Scherven blijven aan de interlayer kleven. Geen gevaar door rondvliegende glasfragmenten — conform EN&nbsp;12600 klasse 1B1, essentieel voor alle loopvlak- en overkappingstoepassingen.</p>
+          <p class="why-card__body">Scherven blijven aan de folie kleven. Geen gevaar door rondvliegende glasfragmenten — conform EN&nbsp;12600 klasse 1B1, essentieel voor alle loopvlak- en overkappingstoepassingen.</p>
         </div>
         <div class="why-card why-card--featured" data-num="02">
           <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
           <h4 class="why-card__title">SentryGlas® voor constructief glas</h4>
-          <p class="why-card__body">SGP-interlayer biedt vijf keer de stijfheid van standaard PVB. Ideaal voor free-standing glazen wanden, loopvloeren, structurele balustrades en gevels zonder extra draagconstructie.</p>
+          <p class="why-card__body">SGP-folie biedt vijf keer de stijfheid van standaard PVB. Ideaal voor free-standing glazen wanden, loopvloeren, structurele balustrades en gevels zonder extra draagconstructie.</p>
         </div>
         <div class="why-card" data-num="03">
           <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
@@ -354,7 +364,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
         <div class="why-card" data-num="05">
           <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
           <h4 class="why-card__title">Zonwering & UV-bescherming</h4>
-          <p class="why-card__body">Gekleurde PVB-interlayers (Vanceva Colors) filteren UV-straling tot 99% en bieden zonwering zonder externe bescherming. Ideaal voor museums, archieven en klimaatgevoelige ruimten.</p>
+          <p class="why-card__body">Gekleurde PVB-folies (Vanceva Colors) filteren UV-straling tot 99% en bieden zonwering zonder externe bescherming. Ideaal voor museums, archieven en klimaatgevoelige ruimten.</p>
         </div>
         <div class="why-card" data-num="06">
           <div class="why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
@@ -377,17 +387,17 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <div class="app-card anim" data-delay="100">
         <div class="app-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h18M3 17h18M8 7v10M16 7v10"/></svg></div>
         <div class="app-card__title">Balustrades & leuningen</div>
-        <div class="app-card__body">Gelaagd glas als veiligheidsbarrière op balkons, terrassen en trapopeningen. SGP-interlayer voor klembevestiging zonder omlijsting (frameless balustrade).</div>
+        <div class="app-card__body">Gelaagd glas als veiligheidsbarrière op balkons, terrassen en trapopeningen. SGP-folie voor klembevestiging zonder omlijsting (frameless balustrade).</div>
       </div>
       <div class="app-card anim" data-delay="160">
         <div class="app-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M8 21V12h8v9M2 9h20"/></svg></div>
         <div class="app-card__title">Dakbeglazing & vliesgevels</div>
-        <div class="app-card__body">Overhead gelaagd glas voor lichtstraten, glazen daken en vliesgevels conform NEN-EN 14019. Scherven blijven bij breuk aan interlayer — geen vallend glas.</div>
+        <div class="app-card__body">Overhead gelaagd glas voor lichtstraten, glazen daken en vliesgevels conform NEN-EN 14019. Scherven blijven bij breuk aan folie — geen vallend glas.</div>
       </div>
       <div class="app-card anim" data-delay="220">
         <div class="app-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></div>
         <div class="app-card__title">Vloerbeglazing & looppaden</div>
-        <div class="app-card__body">Betredbaar glas conform NEN-EN 1051 voor showrooms, bruggtes en spectaculaire vloertoepassingen. SGP-interlayer voor constructieve sterkte bij puntlast.</div>
+        <div class="app-card__body">Betredbaar glas conform NEN-EN 1051 voor showrooms, bruggtes en spectaculaire vloertoepassingen. SGP-folie voor constructieve sterkte bij puntlast.</div>
       </div>
       <div class="app-card anim" data-delay="100">
         <div class="app-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
@@ -402,7 +412,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
       <div class="app-card anim" data-delay="220">
         <div class="app-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         <div class="app-card__title">Gekleurde beglazing & design</div>
-        <div class="app-card__body">Gekleurde Vanceva PVB-interlayers voor architectonisch kleurspel, privacy en branding. Leverbaar in honderden kleuren — ook graduele overgangen in één paneel.</div>
+        <div class="app-card__body">Gekleurde Vanceva PVB-folies voor architectonisch kleurspel, privacy en branding. Leverbaar in honderden kleuren — ook graduele overgangen in één paneel.</div>
       </div>
     </div>
   </section>
@@ -410,28 +420,28 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <section class="prod-specs section" id="specificaties">
     <div class="prod-specs__top">
       <span class="eyebrow anim" data-delay="80">Technische data</span>
-      <h2 class="panel__title anim" data-delay="180">Specificaties &<br />interlayer typen</h2>
+      <h2 class="panel__title anim" data-delay="180">Specificaties &<br />folie typen</h2>
     </div>
     <div class="specs-wrap">
       <table class="specs-table">
         <thead><tr><th>Parameter</th><th>Waarde / Omschrijving</th></tr></thead>
         <tbody>
           <tr><td>Norm</td><td>EN 14449 (gelaagd veiligheidsglas), DoP + CE-markering beschikbaar</td></tr>
-          <tr><td>Interlayer — PVB standaard</td><td>0,38 / 0,76 / 1,14 / 1,52 mm — Trosifol, Eastman Saflex</td></tr>
-          <tr><td>Interlayer — PVB akoestisch</td><td>Trosifol SC, Vanceva Sound — tot 52 dB Rw isolatie</td></tr>
-          <tr><td>Interlayer — SGP (SentryGlas®)</td><td>0,89 / 1,52 / 2,28 mm — 5× sterker dan PVB, constructief toepasbaar</td></tr>
-          <tr><td>Interlayer — DG41</td><td>Superieure helderheid, lage gele index — optische kwaliteitstoepassingen</td></tr>
-          <tr><td>Interlayer — EVA</td><td>Vochtbestendig, geschikt voor natte ruimten en buitentoepassingen</td></tr>
+          <tr><td>Folie — PVB standaard</td><td>0,38 / 0,76 / 1,14 / 1,52 mm — Trosifol, Eastman Saflex</td></tr>
+          <tr><td>Folie — PVB akoestisch</td><td>Trosifol SC, Vanceva Sound — tot 52 dB Rw isolatie</td></tr>
+          <tr><td>Folie — SGP (SentryGlas®)</td><td>0,89 / 1,52 / 2,28 mm — 5× sterker dan PVB, constructief toepasbaar</td></tr>
+          <tr><td>Folie — DG41</td><td>Superieure helderheid, lage gele index — optische kwaliteitstoepassingen</td></tr>
+          <tr><td>Folie — EVA</td><td>Vochtbestendig, geschikt voor natte ruimten en buitentoepassingen</td></tr>
           <tr><td>Glasdickte combinaties</td><td>3+3 / 4+4 / 5+5 / 6+6 / 8+8 / 10+10 mm en asymmetrisch op aanvraag</td></tr>
           <tr><td>Inbraakweerstand</td><td>EN 356: P1A t/m P8B — testverslagen op aanvraag beschikbaar</td></tr>
-          <tr><td>Breukgedrag (EN 12600)</td><td>Klasse 1B1 — scherven gekleefd aan interlayer, geen vrije fragmenten</td></tr>
+          <tr><td>Breukgedrag (EN 12600)</td><td>Klasse 1B1 — scherven gekleefd aan folie, geen vrije fragmenten</td></tr>
           <tr><td>Combinaties</td><td>Gelaagd + gehard (ESG-VSG), + coating, + zeefdruk, + gebogen</td></tr>
-          <tr><td>Gekleurde interlayers</td><td>Vanceva Colors — 400+ kleurcombinaties, UV-filter tot 99%</td></tr>
+          <tr><td>Gekleurde folies</td><td>Vanceva Colors — 400+ kleurcombinaties, UV-filter tot 99%</td></tr>
         </tbody>
       </table>
     </div>
     <div class="specs-cta">
-      <p class="specs-cta__text">Specifieke interlayer combinaties of certificaties nodig? Wij adviseren u graag.</p>
+      <p class="specs-cta__text">Specifieke folie combinaties of certificaties nodig? Wij adviseren u graag.</p>
       <a href="/#contact" class="btn btn--fill">Offerte aanvragen</a>
     </div>
   </section>
@@ -452,7 +462,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
   <section class="prod-cta-band">
     <div class="prod-cta-band__text">
       <div class="prod-cta-band__eyebrow">Vraag vandaag nog aan</div>
-      <div class="prod-cta-band__title">Gelaagd veiligheidsglas op uw specificatie<br />— offerte binnen 1 werkdag.</div>
+      <div class="prod-cta-band__title">Gelaagd veiligheidsglas op uw specificatie<br />— snelle offerte op aanvraag.</div>
     </div>
     <a href="/#contact" class="btn btn--cta-white">Offerte aanvragen</a>
   </section>
@@ -477,7 +487,7 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
           <a href="/gehard-glas">Gehard Glas</a>
           <a href="/gelaagd-glas">Gelaagd Glas</a>
           <a href="/brandwerend-glas">Brandwerend Glas</a>
-          <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+          <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
           <a href="/gebogen-glas">Gebogen Glas</a>
         </nav>
       </div>
@@ -498,6 +508,19 @@ body{font-family:var(--font);background:var(--white);color:var(--text);line-heig
     document.querySelector('.hero').classList.add('section--visible');
     (function(){var cards=document.querySelectorAll('.why-card');if(!cards.length)return;var def=document.querySelector('.why-card--featured');var isTouch=('ontouchstart' in window)||navigator.maxTouchPoints>0;function setF(c){cards.forEach(function(x){x.classList.remove('why-card--featured');});c.classList.add('why-card--featured');}function resetF(){cards.forEach(function(x){x.classList.remove('why-card--featured');});if(def)def.classList.add('why-card--featured');}if(isTouch){cards.forEach(function(c){c.addEventListener('click',function(){setF(c);});});}else{cards.forEach(function(c){c.addEventListener('mouseenter',function(){setF(c);});});var wc=document.querySelector('.why__cards');if(wc)wc.addEventListener('mouseleave',resetF);}})();
     (function(){var b=document.getElementById('navBurger');var m=document.getElementById('navMobileMenu');if(!b||!m)return;b.addEventListener('click',function(){b.classList.toggle('open');m.classList.toggle('open');});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){b.classList.remove('open');m.classList.remove('open');});});})();
-  </script>
+  
+  // Language button
+  document.getElementById('prodLangBtn').addEventListener('click', function() {
+    document.getElementById('prodLangDrop').classList.toggle('open');
+    this.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    var c = document.getElementById('prodLang');
+    if (c && !c.contains(e.target)) {
+      document.getElementById('prodLangDrop').classList.remove('open');
+      document.getElementById('prodLangBtn').classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>

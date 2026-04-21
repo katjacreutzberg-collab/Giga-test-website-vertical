@@ -57,6 +57,32 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   color: var(--text-mid); transition: color 0.2s;
 }
 .nav__links a:hover { color: var(--teal); }
+.nav__lang { position: relative; }
+.nav__lang-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: none; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px;
+  padding: 9px 11px; cursor: pointer; font-family: var(--font);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-mid); transition: border-color 0.2s, color 0.2s; line-height: 1;
+}
+.nav__lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+.nav__lang-btn svg { transition: transform 0.2s; }
+.nav__lang-btn.open svg { transform: rotate(180deg); }
+.nav__lang-dropdown {
+  display: none; position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--white); border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 160px; overflow: hidden; z-index: 300;
+}
+.nav__lang-dropdown.open { display: block; }
+.nav__lang-dropdown button {
+  display: block; width: 100%; padding: 12px 16px;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-mid); text-align: left; font-family: var(--font);
+  transition: background 0.2s, color 0.2s;
+}
+.nav__lang-dropdown button:hover { background: var(--glacial); color: var(--teal); }
 .nav__dropdown { position: relative; align-self: stretch; display: flex; align-items: center; }
 .nav__dropdown-trigger { display: flex; align-items: center; gap: 5px; cursor: default; }
 .nav__dropdown-trigger svg { transition: transform 0.22s; flex-shrink: 0; }
@@ -622,14 +648,24 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
             <a href="/gehard-glas">Gehard Glas</a>
             <a href="/gelaagd-glas">Gelaagd Glas</a>
             <a href="/brandwerend-glas">Brandwerend Glas</a>
-            <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+            <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
             <a href="/gebogen-glas">Gebogen Glas</a>
           </div>
         </div>
         <a href="/#why">Waarom GIGAglas</a>
       </nav>
       <div class="nav__right">
-        <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
+        <div class="nav__lang" id="prodLang">
+        <button class="nav__lang-btn" id="prodLangBtn" aria-label="Taal">
+          <span>NL</span>
+          <svg viewBox="0 0 10 6" width="10" height="6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 0l5 6 5-6"/></svg>
+        </button>
+        <div class="nav__lang-dropdown" id="prodLangDrop">
+          <button onclick="document.getElementById('prodLangDrop').classList.remove('open');document.getElementById('prodLangBtn').classList.remove('open')">NL — Nederlands</button>
+          <button onclick="localStorage.setItem('lang','en');window.location.href='/'">EN — English</button>
+        </div>
+      </div>
+      <a href="/#contact" class="nav__cta">Offerte aanvragen</a>
         <button class="nav__burger" id="navBurger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -644,7 +680,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       <a href="/gehard-glas">Gehard Glas</a>
       <a href="/gelaagd-glas">Gelaagd Glas</a>
       <a href="/brandwerend-glas">Brandwerend Glas</a>
-      <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+      <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
       <a href="/gebogen-glas">Gebogen Glas</a>
     </div>
     <a href="/#why">Waarom GIGAglas</a>
@@ -707,7 +743,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
       <span class="eyebrow anim" data-delay="80">Wat is gehard glas?</span>
       <h2 class="panel__title anim" data-delay="180">Thermisch<br />gehard voor<br />maximale veiligheid.</h2>
       <p class="prod-intro__body anim" data-delay="280">
-        Gehard veiligheidsglas — ook wel getempered glas of ESG (Einscheiben-Sicherheitsglas) genoemd — ontstaat
+        Gehard veiligheidsglas — ook wel thermisch gehard glas of thermisch voorgespannen glas genoemd — ontstaat
         door vlakglas op circa 620 °C te verhitten en vervolgens snel te koelen. Dit thermische hardingsproces
         creëert drukspanningen aan het oppervlak die de breuksterkte verviervoudigen ten opzichte van gewoon glas.
       </p>
@@ -929,7 +965,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
   <section class="prod-cta-band">
     <div class="prod-cta-band__text">
       <div class="prod-cta-band__eyebrow">Vraag vandaag nog aan</div>
-      <div class="prod-cta-band__title">Gehard veiligheidsglas<br />op uw specificatie — offerte binnen 1 werkdag.</div>
+      <div class="prod-cta-band__title">Gehard veiligheidsglas<br />op uw specificatie — snelle offerte op aanvraag.</div>
     </div>
     <a href="/#contact" class="btn btn--cta-white">Offerte aanvragen</a>
   </section>
@@ -957,7 +993,7 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
           <a href="/gehard-glas">Gehard Glas</a>
           <a href="/gelaagd-glas">Gelaagd Glas</a>
           <a href="/brandwerend-glas">Brandwerend Glas</a>
-          <a href="/zeefdruk-glas">Zeefdruk Glas</a>
+          <a href="/zeefdruk-glas">Gezeefdrukt Glas</a>
           <a href="/gebogen-glas">Gebogen Glas</a>
         </nav>
       </div>
@@ -1030,6 +1066,19 @@ body { font-family: var(--font); background: var(--white); color: var(--text); l
         });
       });
     })();
-  </script>
+  
+  // Language button
+  document.getElementById('prodLangBtn').addEventListener('click', function() {
+    document.getElementById('prodLangDrop').classList.toggle('open');
+    this.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e) {
+    var c = document.getElementById('prodLang');
+    if (c && !c.contains(e.target)) {
+      document.getElementById('prodLangDrop').classList.remove('open');
+      document.getElementById('prodLangBtn').classList.remove('open');
+    }
+  });
+</script>
 </body>
 </html>
